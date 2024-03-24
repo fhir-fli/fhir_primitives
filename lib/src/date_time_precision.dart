@@ -249,7 +249,7 @@ extension DateTimePrecisionExtension on DateTimePrecision {
       (minutesPrecision && precision.minutesPrecision) ||
       (secondsPrecision && precision.secondsPrecision);
 
-  String dateTimeToString<T>(DateTime dateTime) {
+  String dateTimeToString(DateTime dateTime) {
     switch (this) {
       case DateTimePrecision.yyyy:
         return dateTime.year.toString();
