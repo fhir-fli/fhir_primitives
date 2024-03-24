@@ -1,8 +1,9 @@
-// ignore_for_file: avoid_equals_and_hash_code_on_mutable_classes
-
 // Project imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../fhir_primitives.dart';
 
+@immutable
 abstract class FhirDateTimeBase
     implements FhirPrimitiveBase, Comparable<FhirDateTimeBase> {
   final bool isValid;
