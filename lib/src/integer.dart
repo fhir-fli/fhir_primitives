@@ -2,12 +2,14 @@
 import 'dart:convert';
 
 // Package imports:
+import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
 // Project imports:
 import 'number.dart';
 import 'primitive_type_exceptions.dart';
 
+@immutable
 class FhirInteger extends FhirNumber {
   const FhirInteger._(super.valueString, super.valueNumber, super.isValid);
 

@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 // Package imports:
+import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
 // Project imports:
@@ -9,6 +10,7 @@ import 'integer.dart';
 import 'number.dart';
 import 'primitive_type_exceptions.dart';
 
+@immutable
 class FhirDecimal extends FhirNumber {
   const FhirDecimal._(
       super.valueString, super.valueNumber, super.isValid, this.isInt);

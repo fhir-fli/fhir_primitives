@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 // Package imports:
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart' as uuid;
 import 'package:yaml/yaml.dart';
 
