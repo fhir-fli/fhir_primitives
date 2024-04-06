@@ -14,6 +14,7 @@ abstract class FhirNumber implements FhirPrimitiveBase {
 
   @override
   int get hashCode => valueString.hashCode;
+  @override
   num? get value => valueNumber;
 
   @override

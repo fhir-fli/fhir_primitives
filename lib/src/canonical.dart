@@ -43,6 +43,7 @@ class FhirCanonical implements FhirPrimitiveBase {
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
+  @override
   Uri? get value => _valueCanonical;
 
   @override

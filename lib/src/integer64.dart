@@ -37,6 +37,7 @@ class FhirInteger64 implements FhirPrimitiveBase {
           : throw YamlFormatException<FhirInteger64>(
               'FormatException: "$json" is not a valid Yaml string or YamlMap.');
 
+  @override
   BigInt? get value => valueNumber;
   final String valueString;
   final BigInt? valueNumber;

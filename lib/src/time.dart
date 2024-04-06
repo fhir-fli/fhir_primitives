@@ -49,6 +49,7 @@ class FhirTime implements FhirPrimitiveBase, Comparable<FhirTime> {
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
+  @override
   String? get value => _valueTime;
   int? get hour => _valueTime?.split(':')[0] == null
       ? null

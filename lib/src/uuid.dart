@@ -35,6 +35,7 @@ class FhirUuid implements FhirPrimitiveBase {
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
+  @override
   String? get value => _valueUri;
 
   @override

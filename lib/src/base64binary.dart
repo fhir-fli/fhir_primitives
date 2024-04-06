@@ -44,6 +44,7 @@ class FhirBase64Binary implements FhirPrimitiveBase {
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
+  @override
   String? get value => _valueBase64Binary;
 
   @override

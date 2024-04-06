@@ -24,6 +24,7 @@ abstract class FhirDateTimeBase
 
   @override
   int get hashCode => input.toString().hashCode;
+  @override
   DateTime get value => valueDateTime;
   DateTime get valueDateTime => precision.dateTimeFromMap(toMap());
   String get valueString => _string;

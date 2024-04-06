@@ -1,1 +1,3 @@
-abstract class FhirPrimitiveBase {}
+abstract class FhirPrimitiveBase {
+  dynamic get value;
+}

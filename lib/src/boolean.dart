@@ -44,6 +44,7 @@ class FhirBoolean implements FhirPrimitiveBase {
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
+  @override
   bool? get value => _valueBoolean;
 
   @override

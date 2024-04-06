@@ -33,6 +33,7 @@ class FhirMarkdown implements FhirPrimitiveBase {
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
+  @override
   String? get value => _valueMarkdown;
 
   @override
