@@ -55,4 +55,14 @@ class FhirDecimal extends FhirNumber {
 
   @override
   dynamic toYaml() => isInt ? valueNumber?.toInt() : valueNumber;
+
+  @override
+  int compareTo(FhirNumber other) {
+    if (other.isValid && isValid) {
+      return valueNumber!.compareTo(other.valueNumber!);
+    } else {
+      throw InvalidTypes<FhirNumber>('One of the values is not valid or null\n'
+          'This number is: ${toString()}, compared number is $other');
+    }
+  }
 }

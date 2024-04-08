@@ -9,7 +9,7 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirInteger64 implements FhirPrimitiveBase {
+class FhirInteger64 implements FhirPrimitiveBase, Comparable<FhirInteger64> {
   const FhirInteger64._(this.valueString, this.valueNumber, this.isValid);
 
   factory FhirInteger64(dynamic inValue) {
@@ -80,4 +80,14 @@ class FhirInteger64 implements FhirPrimitiveBase {
           : valueNumber! < (o as BigInt);
 
   bool operator <=(Object o) => this == o || this < o;
+
+  @override
+  int compareTo(FhirInteger64 other) {
+    if (other.isValid && isValid) {
+      return valueNumber!.compareTo(other.valueNumber!);
+    } else {
+      throw InvalidTypes<FhirNumber>('One of the values is not valid or null\n'
+          'This number is: ${toString()}, compared number is $other');
+    }
+  }
 }

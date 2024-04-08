@@ -43,4 +43,14 @@ class FhirUnsignedInt extends FhirNumber {
 
   @override
   int? get value => valueNumber as int?;
+
+  @override
+  int compareTo(FhirNumber other) {
+    if (other.isValid && isValid) {
+      return valueNumber!.compareTo(other.valueNumber!);
+    } else {
+      throw InvalidTypes<FhirNumber>('One of the values is not valid or null\n'
+          'This number is: ${toString()}, compared number is $other');
+    }
+  }
 }
