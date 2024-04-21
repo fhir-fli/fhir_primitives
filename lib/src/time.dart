@@ -260,35 +260,36 @@ class FhirTime implements FhirPrimitiveBase, Comparable<FhirTime> {
   }
 
   FhirTime subtract(
-      {int hours = 0, int minutes = 0, int seconds = 0, int milliseconds = 0}) {
-    int newMilliseconds = (millisecond ?? 0) - milliseconds;
-    int newSeconds = (second ?? 0) - seconds;
-    int newMinutes = (minute ?? 0) - minutes;
-    int newHours = (hour ?? 0) - hours;
+      {int? hours, int? minutes, int? seconds, int? milliseconds}) {
+    int? newMilliseconds =
+        milliseconds == null ? millisecond : (millisecond ?? 0) - milliseconds;
+    int? newSeconds = seconds == null ? second : (second ?? 0) - seconds;
+    int? newMinutes = minutes == null ? minute : (minute ?? 0) - minutes;
+    int? newHours = hours == null ? hour : (hour ?? 0) - hours;
 
     // Handle underflow for milliseconds
-    while (newMilliseconds < 0) {
-      newMilliseconds += 1000;
-      newSeconds--;
+    while ((newMilliseconds ?? 1) < 0) {
+      newMilliseconds = (newMilliseconds ?? 0) + 1000;
+      newSeconds = (newSeconds ?? 0) - 1;
     }
 
     // Handle underflow for seconds
-    while (newSeconds < 0) {
-      newSeconds += 60;
-      newMinutes--;
+    while ((newSeconds ?? 1) < 0) {
+      newSeconds = (newSeconds ?? 0) + 60;
+      newMinutes = (newMinutes ?? 0) - 1;
     }
 
     // Handle underflow for minutes
-    while (newMinutes < 0) {
-      newMinutes += 60;
-      newHours--;
+    while ((newMinutes ?? 1) < 0) {
+      newMinutes = (newMinutes ?? 0) + 60;
+      newHours = (newHours ?? 0) - 1;
     }
 
     // Handle underflow for hours
-    while (newHours < 0) {
-      newHours += 24;
+    while ((newHours ?? 1) < 0) {
+      newHours = (newHours ?? 0) + 24;
     }
-    newHours = newHours % 24; // Ensure hours wrap around a 24-hour clock
+    newHours = (newHours ?? 0) % 24; // Ensure hours wrap around a 24-hour clock
 
     return FhirTime.fromUnits(
       hour: newHours,
@@ -310,6 +311,14 @@ class FhirTime implements FhirPrimitiveBase, Comparable<FhirTime> {
   bool? operator <(Object other) => _compare(Comparator.lt, other);
 
   bool? operator <=(Object other) => _compare(Comparator.lte, other);
+
+  bool? isAfter(Object other) => _compare(Comparator.gt, other);
+
+  bool? isBefore(Object other) => _compare(Comparator.lt, other);
+
+  bool? isSameOrAfter(Object other) => _compare(Comparator.gte, other);
+
+  bool? isSameOrBefore(Object other) => _compare(Comparator.lte, other);
 
   @override
   int compareTo(FhirTime other) => (this > other ?? false)
