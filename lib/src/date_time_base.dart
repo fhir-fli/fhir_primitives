@@ -8,7 +8,7 @@ import '../fhir_primitives.dart';
 abstract class FhirDateTimeBase
     implements FhirPrimitiveBase, Comparable<FhirDateTimeBase> {
   final bool isValid;
-  final DateTimePrecision precision;
+  final FhirDateTimePrecision precision;
   final Exception? parseError;
   final dynamic input;
   final int year;
@@ -35,15 +35,16 @@ abstract class FhirDateTimeBase
     return this is FhirInstant
         ? precision.isValidInstantPrecision
             ? precision.dateTimeMapToString<FhirInstant>(toMap())
-            : instantPrecision.dateTimeMapToString<FhirInstant>(toMap())
+            : fullInstantPrecision.dateTimeMapToString<FhirInstant>(toMap())
         : this is FhirDateTime
-            ? precision.isValidDateTimePrecision
+            ? precision.isValidFhirDateTimePrecision
                 ? precision.dateTimeMapToString<FhirDateTime>(toMap())
-                : dateTimePrecision.dateTimeMapToString<FhirDateTime>(toMap())
+                : fullDateTimePrecision
+                    .dateTimeMapToString<FhirDateTime>(toMap())
             : this is FhirDate
                 ? precision.isValidDatePrecision
                     ? precision.dateTimeMapToString<FhirDate>(toMap())
-                    : datePrecision.dateTimeMapToString<FhirDate>(toMap())
+                    : fullDatePrecision.dateTimeMapToString<FhirDate>(toMap())
                 : precision.dateTimeMapToString<FhirDateTimeBase>(toMap());
   }
 
@@ -97,7 +98,7 @@ abstract class FhirDateTimeBase
 
   static FhirDateTimeBase _constructor<T>(
     Map<String, num?>? dateTimeMap,
-    DateTimePrecision? precision,
+    FhirDateTimePrecision? precision,
     String? exception,
     dynamic output,
     bool regexpValid,
@@ -105,9 +106,9 @@ abstract class FhirDateTimeBase
     return T == FhirInstant
         ? FhirInstant.fromBase(
             isValid: (precision?.isValidInstantPrecision ?? false) &&
-                precision != DateTimePrecision.invalid &&
+                precision != FhirDateTimePrecision.invalid &&
                 regexpValid,
-            precision: precision ?? DateTimePrecision.invalid,
+            precision: precision ?? FhirDateTimePrecision.invalid,
             input: output,
             parseError: exception == null
                 ? null
@@ -125,10 +126,10 @@ abstract class FhirDateTimeBase
           )
         : T == FhirDateTime
             ? FhirDateTime.fromBase(
-                isValid: (precision?.isValidDateTimePrecision ?? false) &&
-                    precision != DateTimePrecision.invalid &&
+                isValid: (precision?.isValidFhirDateTimePrecision ?? false) &&
+                    precision != FhirDateTimePrecision.invalid &&
                     regexpValid,
-                precision: precision ?? DateTimePrecision.invalid,
+                precision: precision ?? FhirDateTimePrecision.invalid,
                 input: output,
                 parseError: exception == null
                     ? null
@@ -147,9 +148,9 @@ abstract class FhirDateTimeBase
             : T == FhirDate
                 ? FhirDate.fromBase(
                     isValid: (precision?.isValidDatePrecision ?? false) &&
-                        precision != DateTimePrecision.invalid &&
+                        precision != FhirDateTimePrecision.invalid &&
                         regexpValid,
-                    precision: precision ?? DateTimePrecision.invalid,
+                    precision: precision ?? FhirDateTimePrecision.invalid,
                     input: output,
                     parseError: exception == null
                         ? null
@@ -174,7 +175,7 @@ abstract class FhirDateTimeBase
   /// can be a String, a dart DateTime, a FhirDateTimeBase, or an other.
   static FhirDateTimeBase constructor<T>(
     dynamic inValue, [
-    DateTimePrecision? precision,
+    FhirDateTimePrecision? precision,
   ]) {
     String? input;
     String? exception;
@@ -203,7 +204,7 @@ abstract class FhirDateTimeBase
         input +=
             timeZoneOffsetToString(inValue.timeZoneOffset.inHours.toDouble());
       } else {
-        precision ??= DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS;
+        precision ??= FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS;
       }
     } else if (inValue is FhirDateTimeBase) {
       return constructor<T>(inValue.input, precision);
@@ -228,7 +229,8 @@ abstract class FhirDateTimeBase
         dateTimeMap, precision, exception, output ?? inValue, regexpValid);
   }
 
-  FhirDateTimeBase fromJson<T>(String json, [DateTimePrecision? precision]) =>
+  FhirDateTimeBase fromJson<T>(String json,
+          [FhirDateTimePrecision? precision]) =>
       constructor<T>(json, precision);
 
   static FhirDateTimeBase fromUnits<T>({
@@ -242,7 +244,7 @@ abstract class FhirDateTimeBase
     int? microsecond,
     num? timeZoneOffset,
     required bool isUtc,
-    DateTimePrecision? precision,
+    FhirDateTimePrecision? precision,
   }) {
     final Map<String, num?> dateTimeMap = <String, num?>{
       'year': year,
@@ -308,8 +310,8 @@ abstract class FhirDateTimeBase
       return false;
     } else if (!rhs.isValid ||
         !lhs.isValid ||
-        rhs.precision == DateTimePrecision.invalid ||
-        lhs.precision == DateTimePrecision.invalid) {
+        rhs.precision == FhirDateTimePrecision.invalid ||
+        lhs.precision == FhirDateTimePrecision.invalid) {
       if (comparator == Comparator.eq) {
         /// if this is valid rhs is null or invalid, so they are not equal
         return false;
@@ -324,8 +326,8 @@ abstract class FhirDateTimeBase
             'Argument 2: $o (${o.runtimeType}): Valid - false}');
       }
     } else {
-      final DateTimePrecision lhsPrecision = lhs.precision;
-      final DateTimePrecision rhsPrecision = rhs.precision;
+      final FhirDateTimePrecision lhsPrecision = lhs.precision;
+      final FhirDateTimePrecision rhsPrecision = rhs.precision;
       final bool equivalentPrecisions =
           lhsPrecision.isEquivalentTo(rhsPrecision);
 

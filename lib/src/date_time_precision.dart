@@ -1,4 +1,4 @@
-enum DateTimePrecision {
+enum FhirDateTimePrecision {
   // '2012',
   yyyy,
   // '2012-01',
@@ -38,207 +38,207 @@ enum DateTimePrecision {
   invalid,
 }
 
-extension DateTimePrecisionExtension on DateTimePrecision {
-  bool get isValidInstantPrecision => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.instant,
-        DateTimePrecision.invalid,
+extension FhirDateTimePrecisionExtension on FhirDateTimePrecision {
+  bool get isValidInstantPrecision => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.instant,
+        FhirDateTimePrecision.invalid,
       ].contains(this);
 
-  bool get isValidDatePrecision => <DateTimePrecision>[
-        DateTimePrecision.yyyy,
-        DateTimePrecision.yyyy_MM,
-        DateTimePrecision.yyyy_MM_dd,
-        DateTimePrecision.invalid,
+  bool get isValidDatePrecision => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy,
+        FhirDateTimePrecision.yyyy_MM,
+        FhirDateTimePrecision.yyyy_MM_dd,
+        FhirDateTimePrecision.invalid,
       ].contains(this);
 
-  bool get isValidDateTimePrecision => <DateTimePrecision>[
-        DateTimePrecision.yyyy,
-        DateTimePrecision.yyyy_MM,
-        DateTimePrecision.yyyy_MM_dd,
-        DateTimePrecision.yyyy_MM_dd_T_Z,
-        DateTimePrecision.yyyy_MM_dd_T_ZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH,
-        DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HHZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.dateTime,
-        DateTimePrecision.instant,
-        DateTimePrecision.invalid,
+  bool get isValidFhirDateTimePrecision => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy,
+        FhirDateTimePrecision.yyyy_MM,
+        FhirDateTimePrecision.yyyy_MM_dd,
+        FhirDateTimePrecision.yyyy_MM_dd_T_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_ZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.dateTime,
+        FhirDateTimePrecision.instant,
+        FhirDateTimePrecision.invalid,
       ].contains(this);
 
-  bool get hasYear => <DateTimePrecision>[
-        DateTimePrecision.yyyy,
-        DateTimePrecision.yyyy_MM,
-        DateTimePrecision.yyyy_MM_dd,
-        DateTimePrecision.yyyy_MM_dd_T_Z,
-        DateTimePrecision.yyyy_MM_dd_T_ZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH,
-        DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HHZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.dateTime,
-        DateTimePrecision.instant,
+  bool get hasYear => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy,
+        FhirDateTimePrecision.yyyy_MM,
+        FhirDateTimePrecision.yyyy_MM_dd,
+        FhirDateTimePrecision.yyyy_MM_dd_T_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_ZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.dateTime,
+        FhirDateTimePrecision.instant,
       ].contains(this);
 
-  bool get hasMonth => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM,
-        DateTimePrecision.yyyy_MM_dd,
-        DateTimePrecision.yyyy_MM_dd_T_Z,
-        DateTimePrecision.yyyy_MM_dd_T_ZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH,
-        DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HHZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.instant,
-        DateTimePrecision.dateTime,
+  bool get hasMonth => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM,
+        FhirDateTimePrecision.yyyy_MM_dd,
+        FhirDateTimePrecision.yyyy_MM_dd_T_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_ZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.instant,
+        FhirDateTimePrecision.dateTime,
       ].contains(this);
 
-  bool get hasDay => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd,
-        DateTimePrecision.yyyy_MM_dd_T_Z,
-        DateTimePrecision.yyyy_MM_dd_T_ZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH,
-        DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HHZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.instant,
-        DateTimePrecision.dateTime,
+  bool get hasDay => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd,
+        FhirDateTimePrecision.yyyy_MM_dd_T_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_ZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.instant,
+        FhirDateTimePrecision.dateTime,
       ].contains(this);
 
-  bool get hasHours => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_HH,
-        DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HHZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.instant,
-        DateTimePrecision.dateTime,
+  bool get hasHours => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.instant,
+        FhirDateTimePrecision.dateTime,
       ].contains(this);
 
-  bool get hasMinutes => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.instant,
-        DateTimePrecision.dateTime,
+  bool get hasMinutes => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.instant,
+        FhirDateTimePrecision.dateTime,
       ].contains(this);
 
-  bool get hasSeconds => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.instant,
-        DateTimePrecision.dateTime,
+  bool get hasSeconds => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.instant,
+        FhirDateTimePrecision.dateTime,
       ].contains(this);
 
-  bool get hasMilliseconds => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.instant,
-        DateTimePrecision.dateTime,
+  bool get hasMilliseconds => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.instant,
+        FhirDateTimePrecision.dateTime,
       ].contains(this);
 
-  bool get hasTimezoneOffset => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_Z,
-        DateTimePrecision.yyyy_MM_dd_T_ZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HHZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.instant,
+  bool get hasTimezoneOffset => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_ZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.instant,
       ].contains(this);
 
-  bool get yearsPrecision => DateTimePrecision.yyyy == this;
+  bool get yearsPrecision => FhirDateTimePrecision.yyyy == this;
 
-  bool get monthsPrecision => DateTimePrecision.yyyy_MM == this;
+  bool get monthsPrecision => FhirDateTimePrecision.yyyy_MM == this;
 
-  bool get daysPrecision => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd,
-        DateTimePrecision.yyyy_MM_dd_T_Z,
-        DateTimePrecision.yyyy_MM_dd_T_ZZ,
+  bool get daysPrecision => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd,
+        FhirDateTimePrecision.yyyy_MM_dd_T_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_ZZ,
       ].contains(this);
 
-  bool get hoursPrecision => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_HH,
-        DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HHZZ,
+  bool get hoursPrecision => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
       ].contains(this);
 
-  bool get minutesPrecision => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+  bool get minutesPrecision => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
       ].contains(this);
 
-  bool get secondsPrecision => <DateTimePrecision>[
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-        DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-        DateTimePrecision.dateTime,
-        DateTimePrecision.instant,
+  bool get secondsPrecision => <FhirDateTimePrecision>[
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+        FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+        FhirDateTimePrecision.dateTime,
+        FhirDateTimePrecision.instant,
       ].contains(this);
 
-  bool isEquivalentTo(DateTimePrecision precision) =>
+  bool isEquivalentTo(FhirDateTimePrecision precision) =>
       (yearsPrecision && precision.yearsPrecision) ||
       (monthsPrecision && precision.monthsPrecision) ||
       (daysPrecision && precision.daysPrecision) ||
@@ -248,37 +248,37 @@ extension DateTimePrecisionExtension on DateTimePrecision {
 
   String dateTimeToString(DateTime dateTime) {
     switch (this) {
-      case DateTimePrecision.yyyy:
+      case FhirDateTimePrecision.yyyy:
         return dateTime.year.toString();
-      case DateTimePrecision.yyyy_MM:
+      case FhirDateTimePrecision.yyyy_MM:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}';
-      case DateTimePrecision.yyyy_MM_dd:
+      case FhirDateTimePrecision.yyyy_MM_dd:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}';
-      case DateTimePrecision.yyyy_MM_dd_T_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_Z:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}TZ';
-      case DateTimePrecision.yyyy_MM_dd_T_ZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_ZZ:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
             '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
             '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
             '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
-      case DateTimePrecision.yyyy_MM_dd_T_HH:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
             '${dateTime.hour.toString().padLeft(2, '0')}';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
             '${dateTime.hour.toString().padLeft(2, '0')}Z';
-      case DateTimePrecision.yyyy_MM_dd_T_HHZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
@@ -286,19 +286,19 @@ extension DateTimePrecisionExtension on DateTimePrecision {
             '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
             '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
             '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
             '${dateTime.hour.toString().padLeft(2, '0')}:'
             '${dateTime.minute.toString().padLeft(2, '0')}';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
             '${dateTime.hour.toString().padLeft(2, '0')}:'
             '${dateTime.minute.toString().padLeft(2, '0')}Z';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
@@ -307,21 +307,21 @@ extension DateTimePrecisionExtension on DateTimePrecision {
             '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
             '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
             '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
             '${dateTime.hour.toString().padLeft(2, '0')}:'
             '${dateTime.minute.toString().padLeft(2, '0')}:'
             '${dateTime.second.toString().padLeft(2, '0')}';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
             '${dateTime.hour.toString().padLeft(2, '0')}:'
             '${dateTime.minute.toString().padLeft(2, '0')}:'
             '${dateTime.second.toString().padLeft(2, '0')}Z';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}T'
@@ -331,7 +331,7 @@ extension DateTimePrecisionExtension on DateTimePrecision {
             '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
             '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
             '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}'
@@ -339,7 +339,7 @@ extension DateTimePrecisionExtension on DateTimePrecision {
             '${dateTime.minute.toString().padLeft(2, '0')}:'
             '${dateTime.second.toString().padLeft(2, '0')}.'
             '${dateTime.millisecond.toString().padLeft(3, '0')}';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}'
@@ -347,7 +347,7 @@ extension DateTimePrecisionExtension on DateTimePrecision {
             '${dateTime.minute.toString().padLeft(2, '0')}:'
             '${dateTime.second.toString().padLeft(2, '0')}.'
             '${dateTime.millisecond.toString().padLeft(3, '0')}Z';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
         return '${dateTime.year.toString().padLeft(4, '0')}-'
             '${dateTime.month.toString().padLeft(2, '0')}-'
             '${dateTime.day.toString().padLeft(2, '0')}'
@@ -358,71 +358,71 @@ extension DateTimePrecisionExtension on DateTimePrecision {
             '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
             '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
             '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
-      case DateTimePrecision.dateTime:
+      case FhirDateTimePrecision.dateTime:
         return dateTime.toString();
-      case DateTimePrecision.instant:
+      case FhirDateTimePrecision.instant:
         return dateTime.toIso8601String();
-      case DateTimePrecision.invalid:
+      case FhirDateTimePrecision.invalid:
         return dateTime.toString();
     }
   }
 
-  bool isEquallyPrecise(DateTimePrecision precision) {
+  bool isEquallyPrecise(FhirDateTimePrecision precision) {
     switch (this) {
-      case DateTimePrecision.yyyy:
-        return precision == DateTimePrecision.yyyy;
+      case FhirDateTimePrecision.yyyy:
+        return precision == FhirDateTimePrecision.yyyy;
 
-      case DateTimePrecision.yyyy_MM:
-        return precision == DateTimePrecision.yyyy_MM;
+      case FhirDateTimePrecision.yyyy_MM:
+        return precision == FhirDateTimePrecision.yyyy_MM;
 
-      case DateTimePrecision.yyyy_MM_dd:
-      case DateTimePrecision.yyyy_MM_dd_T_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_ZZ:
-        return <DateTimePrecision>[
-          DateTimePrecision.yyyy_MM_dd,
-          DateTimePrecision.yyyy_MM_dd_T_Z,
-          DateTimePrecision.yyyy_MM_dd_T_ZZ,
+      case FhirDateTimePrecision.yyyy_MM_dd:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_ZZ:
+        return <FhirDateTimePrecision>[
+          FhirDateTimePrecision.yyyy_MM_dd,
+          FhirDateTimePrecision.yyyy_MM_dd_T_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_ZZ,
         ].contains(precision);
 
-      case DateTimePrecision.yyyy_MM_dd_T_HH:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_HHZZ:
-        return <DateTimePrecision>[
-          DateTimePrecision.yyyy_MM_dd_T_HH,
-          DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-          DateTimePrecision.yyyy_MM_dd_T_HHZZ,
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
+        return <FhirDateTimePrecision>[
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
         ].contains(precision);
 
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
-        return <DateTimePrecision>[
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
+        return <FhirDateTimePrecision>[
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
         ].contains(precision);
 
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
-      case DateTimePrecision.dateTime:
-      case DateTimePrecision.instant:
-        return <DateTimePrecision>[
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-          DateTimePrecision.dateTime,
-          DateTimePrecision.instant,
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
+      case FhirDateTimePrecision.dateTime:
+      case FhirDateTimePrecision.instant:
+        return <FhirDateTimePrecision>[
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+          FhirDateTimePrecision.dateTime,
+          FhirDateTimePrecision.instant,
         ].contains(precision);
 
-      case DateTimePrecision.invalid:
-        return precision == DateTimePrecision.invalid;
+      case FhirDateTimePrecision.invalid:
+        return precision == FhirDateTimePrecision.invalid;
     }
   }
 
@@ -435,7 +435,9 @@ extension DateTimePrecisionExtension on DateTimePrecision {
       hasMinutes ? map['minute'] as int? ?? 0 : 0,
       hasSeconds ? map['second'] as int? ?? 0 : 0,
       hasMilliseconds ? map['millisecond'] as int? ?? 0 : 0,
-      this == DateTimePrecision.dateTime ? map['microsecond'] as int? ?? 0 : 0,
+      this == FhirDateTimePrecision.dateTime
+          ? map['microsecond'] as int? ?? 0
+          : 0,
     );
     final DateTime localDateTime = dateTime.toLocal();
     final Duration localOffset = localDateTime.timeZoneOffset;
@@ -475,45 +477,45 @@ extension DateTimePrecisionExtension on DateTimePrecision {
     final String offset =
         timeZoneOffsetToString(map['timeZoneOffset']?.toDouble());
     switch (this) {
-      case DateTimePrecision.yyyy:
+      case FhirDateTimePrecision.yyyy:
         return year;
-      case DateTimePrecision.yyyy_MM:
+      case FhirDateTimePrecision.yyyy_MM:
         return '$year-$month';
-      case DateTimePrecision.yyyy_MM_dd:
+      case FhirDateTimePrecision.yyyy_MM_dd:
         return '$year-$month-$day';
-      case DateTimePrecision.yyyy_MM_dd_T_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_Z:
         return '$year-$month-${day}TZ';
-      case DateTimePrecision.yyyy_MM_dd_T_ZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_ZZ:
         return '$year-$month-${day}T$offset';
-      case DateTimePrecision.yyyy_MM_dd_T_HH:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH:
         return '$year-$month-${day}T$hour';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z:
         return '$year-$month-${day}T${hour}Z';
-      case DateTimePrecision.yyyy_MM_dd_T_HHZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
         return '$year-$month-${day}T$hour$offset';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
         return '$year-$month-${day}T$hour:$minute';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
         return '$year-$month-${day}T$hour:${minute}Z';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
         return '$year-$month-${day}T$hour:$minute$offset';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
         return '$year-$month-${day}T$hour:$minute:$second';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
         return '$year-$month-${day}T$hour:$minute:${second}Z';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
         return '$year-$month-${day}T$hour:$minute:$second$offset';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
         return '$year-$month-${day}T$hour:$minute:$second.$millisecond';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
         return '$year-$month-${day}T$hour:$minute:$second.${millisecond}Z';
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
         return '$year-$month-${day}T$hour:$minute:$second.$millisecond$offset';
-      case DateTimePrecision.dateTime:
+      case FhirDateTimePrecision.dateTime:
         return '$year-$month-${day}T$hour:$minute:$second.$millisecond$microsecond$offset';
-      case DateTimePrecision.instant:
+      case FhirDateTimePrecision.instant:
         return '$year-$month-${day}T$hour:$minute:$second.$millisecond$offset';
-      case DateTimePrecision.invalid:
+      case FhirDateTimePrecision.invalid:
         return '';
     }
   }
@@ -521,15 +523,15 @@ extension DateTimePrecisionExtension on DateTimePrecision {
   DateTime? stringToDateTime(String string) {
     try {
       switch (this) {
-        case DateTimePrecision.yyyy:
+        case FhirDateTimePrecision.yyyy:
           return DateTime.tryParse('${string.substring(0, 4)}-01-01');
-        case DateTimePrecision.yyyy_MM:
+        case FhirDateTimePrecision.yyyy_MM:
           return DateTime.tryParse('${string.substring(0, 7)}-01');
-        case DateTimePrecision.yyyy_MM_dd:
+        case FhirDateTimePrecision.yyyy_MM_dd:
           return DateTime.tryParse(string.substring(0, 10));
-        case DateTimePrecision.yyyy_MM_dd_T_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_Z:
           return DateTime.tryParse('${string.substring(0, 10)}T00:00:00Z');
-        case DateTimePrecision.yyyy_MM_dd_T_ZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_ZZ:
           {
             final DateTime? dateTime =
                 DateTime.tryParse('${string.substring(0, 10)}T00:00:00');
@@ -551,11 +553,11 @@ extension DateTimePrecisionExtension on DateTimePrecision {
                     actualDateTime.millisecond,
                     actualDateTime.microsecond);
           }
-        case DateTimePrecision.yyyy_MM_dd_T_HH:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH:
           return DateTime.tryParse(string.substring(0, 13));
-        case DateTimePrecision.yyyy_MM_dd_T_HH_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z:
           return DateTime.tryParse('${string.substring(0, 13)}:00:00Z');
-        case DateTimePrecision.yyyy_MM_dd_T_HHZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
           {
             {
               final DateTime? dateTime = DateTime.tryParse(
@@ -579,18 +581,18 @@ extension DateTimePrecisionExtension on DateTimePrecision {
                       actualDateTime.microsecond);
             }
           }
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
           return DateTime.tryParse(string.substring(0, 16));
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
           return DateTime.tryParse('${string.substring(0, 16)}:00Z');
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
           return DateTime.tryParse(
               '${string.substring(0, 16)}:00${string.substring(16)}');
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
           return DateTime.tryParse(string.substring(0, 19));
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
           return DateTime.tryParse('${string.substring(0, 19)}Z');
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
           {
             {
               final DateTime? dateTime = DateTime.tryParse(
@@ -614,11 +616,11 @@ extension DateTimePrecisionExtension on DateTimePrecision {
                       actualDateTime.microsecond);
             }
           }
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
           return DateTime.tryParse(string.substring(0, 23));
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
           return DateTime.tryParse('${string.substring(0, 23)}Z');
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
           {
             {
               final DateTime? dateTime = DateTime.tryParse(
@@ -642,11 +644,11 @@ extension DateTimePrecisionExtension on DateTimePrecision {
                       actualDateTime.microsecond);
             }
           }
-        case DateTimePrecision.dateTime:
+        case FhirDateTimePrecision.dateTime:
           return DateTime.tryParse(string);
-        case DateTimePrecision.instant:
+        case FhirDateTimePrecision.instant:
           return DateTime.tryParse(string);
-        case DateTimePrecision.invalid:
+        case FhirDateTimePrecision.invalid:
           return null;
       }
     } catch (e) {
@@ -655,164 +657,164 @@ extension DateTimePrecisionExtension on DateTimePrecision {
   }
 
   String unit() {
-    if (this == DateTimePrecision.yyyy) {
+    if (this == FhirDateTimePrecision.yyyy) {
       return 'year';
-    } else if (this == DateTimePrecision.yyyy_MM) {
+    } else if (this == FhirDateTimePrecision.yyyy_MM) {
       return 'month';
-    } else if (this == DateTimePrecision.yyyy_MM_dd ||
-        this == DateTimePrecision.yyyy_MM_dd_T_Z ||
-        this == DateTimePrecision.yyyy_MM_dd_T_ZZ) {
+    } else if (this == FhirDateTimePrecision.yyyy_MM_dd ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_Z ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_ZZ) {
       return 'day';
-    } else if (this == DateTimePrecision.yyyy_MM_dd_T_HH ||
-        this == DateTimePrecision.yyyy_MM_dd_T_HH_Z ||
-        this == DateTimePrecision.yyyy_MM_dd_T_HHZZ) {
+    } else if (this == FhirDateTimePrecision.yyyy_MM_dd_T_HH ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ) {
       return 'hour';
-    } else if (this == DateTimePrecision.yyyy_MM_dd_T_HH_mm ||
-        this == DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z ||
-        this == DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ) {
+    } else if (this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ) {
       return 'minute';
-    } else if (this == DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss ||
-        this == DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z ||
-        this == DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ) {
+    } else if (this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ) {
       return 'second';
-    } else if (this == DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS ||
-        this == DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z ||
-        this == DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ) {
+    } else if (this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z ||
+        this == FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ) {
       return 'millisecond';
     } else {
       return 'invalid';
     }
   }
 
-  bool hasSamePrecisionAs(DateTimePrecision precision) {
+  bool hasSamePrecisionAs(FhirDateTimePrecision precision) {
     switch (this) {
-      case DateTimePrecision.yyyy:
-        return precision == DateTimePrecision.yyyy;
+      case FhirDateTimePrecision.yyyy:
+        return precision == FhirDateTimePrecision.yyyy;
 
-      case DateTimePrecision.yyyy_MM:
-        return precision == DateTimePrecision.yyyy_MM;
+      case FhirDateTimePrecision.yyyy_MM:
+        return precision == FhirDateTimePrecision.yyyy_MM;
 
-      case DateTimePrecision.yyyy_MM_dd:
-      case DateTimePrecision.yyyy_MM_dd_T_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_ZZ:
-        return <DateTimePrecision>[
-          DateTimePrecision.yyyy_MM_dd,
-          DateTimePrecision.yyyy_MM_dd_T_Z,
-          DateTimePrecision.yyyy_MM_dd_T_ZZ,
+      case FhirDateTimePrecision.yyyy_MM_dd:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_ZZ:
+        return <FhirDateTimePrecision>[
+          FhirDateTimePrecision.yyyy_MM_dd,
+          FhirDateTimePrecision.yyyy_MM_dd_T_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_ZZ,
         ].contains(precision);
 
-      case DateTimePrecision.yyyy_MM_dd_T_HH:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_HHZZ:
-        return <DateTimePrecision>[
-          DateTimePrecision.yyyy_MM_dd_T_HH,
-          DateTimePrecision.yyyy_MM_dd_T_HH_Z,
-          DateTimePrecision.yyyy_MM_dd_T_HHZZ,
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
+        return <FhirDateTimePrecision>[
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ,
         ].contains(precision);
 
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
-        return <DateTimePrecision>[
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
+        return <FhirDateTimePrecision>[
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ,
         ].contains(precision);
 
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
-      case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
-      case DateTimePrecision.dateTime:
-      case DateTimePrecision.instant:
-        return <DateTimePrecision>[
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
-          DateTimePrecision.dateTime,
-          DateTimePrecision.instant,
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
+      case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
+      case FhirDateTimePrecision.dateTime:
+      case FhirDateTimePrecision.instant:
+        return <FhirDateTimePrecision>[
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
+          FhirDateTimePrecision.dateTime,
+          FhirDateTimePrecision.instant,
         ].contains(precision);
 
-      case DateTimePrecision.invalid:
-        return precision == DateTimePrecision.invalid;
+      case FhirDateTimePrecision.invalid:
+        return precision == FhirDateTimePrecision.invalid;
     }
   }
 }
 
-DateTimePrecision precisionFromDateTimeString(String inValue) {
+FhirDateTimePrecision precisionFromDateTimeString(String inValue) {
   if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)\.\d{3}[+-](0[0-9]|1[0-3]):[0-5][0-9]$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)\.\d{3}Z$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)\.\d{3}$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)[+-](0[0-9]|1[0-3]):[0-5][0-9]$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)Z$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9][+-](0[0-9]|1[0-3]):[0-5][0-9]$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9]Z$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3]):[0-5][0-9]$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_mm;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3])[+-](0[0-9]|1[0-3]):[0-5][0-9]$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HHZZ;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3])Z$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH_Z;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T ]([01][0-9]|2[0-3])$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_HH;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_HH;
   } else if (RegExp(
           r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T[+-](0[0-9]|1[0-3]):[0-5][0-9]$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_ZZ;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_ZZ;
   } else if (RegExp(r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])TZ$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd_T_Z;
+    return FhirDateTimePrecision.yyyy_MM_dd_T_Z;
   } else if (RegExp(r'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$')
       .hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM_dd;
+    return FhirDateTimePrecision.yyyy_MM_dd;
   } else if (RegExp(r'^\d{4}-(0[1-9]|1[0-2])$').hasMatch(inValue)) {
-    return DateTimePrecision.yyyy_MM;
+    return FhirDateTimePrecision.yyyy_MM;
   } else if (RegExp(r'^\d{4}$').hasMatch(inValue)) {
-    return DateTimePrecision.yyyy;
+    return FhirDateTimePrecision.yyyy;
   } else if (instantExp.hasMatch(inValue)) {
-    return DateTimePrecision.instant;
+    return FhirDateTimePrecision.instant;
   } else if (dateTimeExp.hasMatch(inValue)) {
-    return DateTimePrecision.dateTime;
+    return FhirDateTimePrecision.dateTime;
   } else {
-    return DateTimePrecision.invalid;
+    return FhirDateTimePrecision.invalid;
   }
 }
 
@@ -859,49 +861,49 @@ Map<String, num?> formatDateTimeString<T>(String dateTimeString) {
   };
 }
 
-DateTimePrecision precisionFromMap(Map<String, num?> map) {
+FhirDateTimePrecision precisionFromMap(Map<String, num?> map) {
   if (map['month'] == null) {
-    return DateTimePrecision.yyyy;
+    return FhirDateTimePrecision.yyyy;
   } else if (map['day'] == null) {
-    return DateTimePrecision.yyyy_MM;
+    return FhirDateTimePrecision.yyyy_MM;
   } else if (map['hour'] == null) {
     return map['isUtc'] == 1
         ? map['timeZoneOffset'] == null
-            ? DateTimePrecision.yyyy_MM_dd
-            : DateTimePrecision.yyyy_MM_dd_T_ZZ
-        : DateTimePrecision.yyyy_MM_dd_T_Z;
+            ? FhirDateTimePrecision.yyyy_MM_dd
+            : FhirDateTimePrecision.yyyy_MM_dd_T_ZZ
+        : FhirDateTimePrecision.yyyy_MM_dd_T_Z;
   } else if (map['minute'] == null) {
     return map['isUtc'] == 1
         ? map['timeZoneOffset'] == null
-            ? DateTimePrecision.yyyy_MM_dd_T_HH
-            : DateTimePrecision.yyyy_MM_dd_T_HHZZ
-        : DateTimePrecision.yyyy_MM_dd_T_HH_Z;
+            ? FhirDateTimePrecision.yyyy_MM_dd_T_HH
+            : FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ
+        : FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z;
   } else if (map['second'] == null) {
     return map['isUtc'] == 1
         ? map['timeZoneOffset'] == null
-            ? DateTimePrecision.yyyy_MM_dd_T_HH_mm
-            : DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ
-        : DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z;
+            ? FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm
+            : FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ
+        : FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z;
   } else if (map['millisecond'] == null) {
     return map['isUtc'] == 1
         ? map['timeZoneOffset'] == null
-            ? DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss
-            : DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ
-        : DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z;
+            ? FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss
+            : FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ
+        : FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z;
   } else if (map['microsecond'] == null) {
     return map['isUtc'] == 1
         ? map['timeZoneOffset'] == null
-            ? DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS
-            : DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ
-        : DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z;
+            ? FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS
+            : FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ
+        : FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z;
   } else {
-    return DateTimePrecision.dateTime;
+    return FhirDateTimePrecision.dateTime;
   }
 }
 
-const DateTimePrecision datePrecision = DateTimePrecision.yyyy_MM_dd;
-const DateTimePrecision dateTimePrecision = DateTimePrecision.dateTime;
-const DateTimePrecision instantPrecision = DateTimePrecision.instant;
+const FhirDateTimePrecision fullDatePrecision = FhirDateTimePrecision.yyyy_MM_dd;
+const FhirDateTimePrecision fullDateTimePrecision = FhirDateTimePrecision.dateTime;
+const FhirDateTimePrecision fullInstantPrecision = FhirDateTimePrecision.instant;
 
 String timeZoneOffsetToString(double? offset) {
   final int offsetHours = offset?.toInt() ?? 0; // Extract hours from offset

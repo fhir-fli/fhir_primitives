@@ -11,20 +11,22 @@ void fhirDateTimeTest() {
         r'([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?');
     expect(pattern.hasMatch(issued.toString()), true);
   });
-  group('DateTimePrecision enum tests', () {
+  group('FhirDateTimePrecision enum tests', () {
     test('All enum values should have unique string representations', () {
-      final values = DateTimePrecision.values;
+      final values = FhirDateTimePrecision.values;
       final uniqueStrings = values.map((e) => e.toString()).toSet();
       expect(uniqueStrings.length, equals(values.length));
     });
 
-    test('DateTimePrecisionExtension should correctly convert DateTime objects',
+    test(
+        'FhirDateTimePrecisionExtension should correctly convert DateTime objects',
         () {
       final DateTime dateTime = DateTime(2023, 7, 15, 12, 30, 45);
-      expect(DateTimePrecision.yyyy.dateTimeToString(dateTime), equals('2023'));
-      expect(DateTimePrecision.yyyy_MM.dateTimeToString(dateTime),
+      expect(FhirDateTimePrecision.yyyy.dateTimeToString(dateTime),
+          equals('2023'));
+      expect(FhirDateTimePrecision.yyyy_MM.dateTimeToString(dateTime),
           equals('2023-07'));
-      expect(DateTimePrecision.yyyy_MM_dd.dateTimeToString(dateTime),
+      expect(FhirDateTimePrecision.yyyy_MM_dd.dateTimeToString(dateTime),
           equals('2023-07-15'));
     });
 

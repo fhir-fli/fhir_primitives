@@ -26,20 +26,22 @@ class FhirDateTime extends FhirDateTimeBase {
     required super.isUtc,
   });
 
-  factory FhirDateTime(dynamic inValue, [DateTimePrecision? precision]) =>
+  factory FhirDateTime(dynamic inValue, [FhirDateTimePrecision? precision]) =>
       FhirDateTimeBase.constructor<FhirDateTime>(
           inValue,
           inValue is DateTime
               ? precision ??
                   (inValue.isUtc
-                      ? DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z
-                      : DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ)
+                      ? FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z
+                      : FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ)
               : precision) as FhirDateTime;
 
-  factory FhirDateTime.fromJson(String json, {DateTimePrecision? precision}) =>
+  factory FhirDateTime.fromJson(String json,
+          {FhirDateTimePrecision? precision}) =>
       FhirDateTime(json, precision);
 
-  factory FhirDateTime.fromYaml(String yaml, [DateTimePrecision? precision]) =>
+  factory FhirDateTime.fromYaml(String yaml,
+          [FhirDateTimePrecision? precision]) =>
       FhirDateTime(jsonDecode(jsonEncode(yaml)), precision);
 
   factory FhirDateTime.fromUnits({

@@ -19,7 +19,7 @@ void annoyinglyDetailedDateTimeTest() {
         expect(dateyyyyFromString.toJson(), equals(yyyy));
       });
       final dateyyyyFromDateTime =
-          FhirDateTime(yyyyDateTime, DateTimePrecision.yyyy);
+          FhirDateTime(yyyyDateTime, FhirDateTimePrecision.yyyy);
       test('dateyyyyFromDateTime', () {
         expect(dateyyyyFromDateTime.isValid, isTrue);
         expect(dateyyyyFromDateTime.valueString, equals(yyyy));
@@ -47,7 +47,7 @@ void annoyinglyDetailedDateTimeTest() {
         expect(dateyyyyMMFromString.toJson(), equals(yyyyMM));
       });
       final dateyyyyMMFromDateTime =
-          FhirDateTime(yyyyMMDateTime, DateTimePrecision.yyyy_MM);
+          FhirDateTime(yyyyMMDateTime, FhirDateTimePrecision.yyyy_MM);
       test('dateyyyyMMFromDateTime', () {
         expect(dateyyyyMMFromDateTime.isValid, isTrue);
         expect(dateyyyyMMFromDateTime.valueString, equals(yyyyMM));
@@ -73,7 +73,7 @@ void annoyinglyDetailedDateTimeTest() {
         expect(dateyyyyMMddFromString.toJson(), equals(yyyyMMdd));
       });
       final dateyyyyMMddFromDateTime = FhirDateTime(
-          yyyyMMddDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS);
+          yyyyMMddDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS);
       test('dateyyyyMMddFromDateTime', () {
         expect(dateyyyyMMddFromDateTime.isValid, isTrue);
         expect(dateyyyyMMddFromDateTime.valueString,
@@ -97,7 +97,7 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTDateTime = DateTime(2012, 1, 31);
       final dateyyyyMMddTFromString = FhirDateTime(yyyyMMddT);
       final dateyyyyMMddTFromDateTime = FhirDateTime(
-          yyyyMMddTDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS);
+          yyyyMMddTDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS);
       final dateyyyyMMddTFromUnits =
           FhirDateTime.fromUnits(year: 2012, month: 1, day: 31);
 
@@ -131,8 +131,8 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTZZ = '2012-01-31T$offset';
       final yyyyMMddTZZDateTime = DateTime(2012, 1, 31);
       final dateyyyyMMddTZZFromString = FhirDateTime(yyyyMMddTZZ);
-      final dateyyyyMMddTZZFromDateTime =
-          FhirDateTime(yyyyMMddTZZDateTime, DateTimePrecision.yyyy_MM_dd_T_ZZ);
+      final dateyyyyMMddTZZFromDateTime = FhirDateTime(
+          yyyyMMddTZZDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_ZZ);
       final dateyyyyMMddTZZFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -165,8 +165,8 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHH = '2012-01-31T12';
       final yyyyMMddTHHDateTime = DateTime(2012, 1, 31, 12);
       final dateyyyyMMddTHHFromString = FhirDateTime(yyyyMMddTHH);
-      final dateyyyyMMddTHHFromDateTime =
-          FhirDateTime(yyyyMMddTHHDateTime, DateTimePrecision.yyyy_MM_dd_T_HH);
+      final dateyyyyMMddTHHFromDateTime = FhirDateTime(
+          yyyyMMddTHHDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH);
       final dateyyyyMMddTHHFromUnits =
           FhirDateTime.fromUnits(year: 2012, month: 1, day: 31, hour: 12);
 
@@ -197,7 +197,7 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHHZDateTime = DateTime(2012, 1, 31, 12);
       final dateyyyyMMddTHHZFromString = FhirDateTime(yyyyMMddTHHZ);
       final dateyyyyMMddTHHZFromDateTime = FhirDateTime(
-          yyyyMMddTHHZDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_Z);
+          yyyyMMddTHHZDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z);
       final dateyyyyMMddTHHZFromUnits = FhirDateTime.fromUnits(
           year: 2012, month: 1, day: 31, hour: 12, isUtc: true);
 
@@ -228,7 +228,7 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHHZZDateTime = DateTime(2012, 1, 31, 12);
       final dateyyyyMMddTHHZZFromString = FhirDateTime(yyyyMMddTHHZZ);
       final dateyyyyMMddTHHZZFromDateTime = FhirDateTime(
-          yyyyMMddTHHZZDateTime, DateTimePrecision.yyyy_MM_dd_T_HHZZ);
+          yyyyMMddTHHZZDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ);
       final dateyyyyMMddTHHZZFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -264,7 +264,7 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHHmmDateTime = DateTime(2012, 1, 31, 12, 30);
       final dateyyyyMMddTHHmmFromString = FhirDateTime(yyyyMMddTHHmm);
       final dateyyyyMMddTHHmmFromDateTime = FhirDateTime(
-          yyyyMMddTHHmmDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_mm);
+          yyyyMMddTHHmmDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm);
       final dateyyyyMMddTHHmmFromUnits = FhirDateTime.fromUnits(
           year: 2012, month: 1, day: 31, hour: 12, minute: 30);
 
@@ -296,7 +296,7 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHHmmZDateTime = DateTime(2012, 1, 31, 12, 30);
       final dateyyyyMMddTHHmmZFromString = FhirDateTime(yyyyMMddTHHmmZ);
       final dateyyyyMMddTHHmmZFromDateTime = FhirDateTime(
-          yyyyMMddTHHmmZDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z);
+          yyyyMMddTHHmmZDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z);
       final dateyyyyMMddTHHmmZFromUnits = FhirDateTime.fromUnits(
           year: 2012, month: 1, day: 31, hour: 12, minute: 30, isUtc: true);
 
@@ -329,7 +329,7 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHHmmZZDateTime = DateTime(2012, 1, 31, 12, 30);
       final dateyyyyMMddTHHmmZZFromString = FhirDateTime(yyyyMMddTHHmmZZ);
       final dateyyyyMMddTHHmmZZFromDateTime = FhirDateTime(
-          yyyyMMddTHHmmZZDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ);
+          yyyyMMddTHHmmZZDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ);
       final dateyyyyMMddTHHmmZZFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -369,7 +369,7 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHHmmssDateTime = DateTime(2012, 1, 31, 12, 30, 59);
       final dateyyyyMMddTHHmmssFromString = FhirDateTime(yyyyMMddTHHmmss);
       final dateyyyyMMddTHHmmssFromDateTime = FhirDateTime(
-          yyyyMMddTHHmmssDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss);
+          yyyyMMddTHHmmssDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss);
       final dateyyyyMMddTHHmmssFromUnits = FhirDateTime.fromUnits(
           year: 2012, month: 1, day: 31, hour: 12, minute: 30, second: 59);
 
@@ -404,7 +404,8 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHHmmssZDateTime = DateTime(2012, 1, 31, 12, 30, 59);
       final dateyyyyMMddTHHmmssZFromString = FhirDateTime(yyyyMMddTHHmmssZ);
       final dateyyyyMMddTHHmmssZFromDateTime = FhirDateTime(
-          yyyyMMddTHHmmssZDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z);
+          yyyyMMddTHHmmssZDateTime,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z);
       final dateyyyyMMddTHHmmssZFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -447,7 +448,8 @@ void annoyinglyDetailedDateTimeTest() {
       final yyyyMMddTHHmmssZZDateTime = DateTime(2012, 1, 31, 12, 30, 59);
       final dateyyyyMMddTHHmmssZZFromString = FhirDateTime(yyyyMMddTHHmmssZZ);
       final dateyyyyMMddTHHmmssZZFromDateTime = FhirDateTime(
-          yyyyMMddTHHmmssZZDateTime, DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ);
+          yyyyMMddTHHmmssZZDateTime,
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ);
       final dateyyyyMMddTHHmmssZZFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -491,7 +493,7 @@ void annoyinglyDetailedDateTimeTest() {
       final dateyyyyMMddTHHmmssSSSFromString = FhirDateTime(yyyyMMddTHHmmssSSS);
       final dateyyyyMMddTHHmmssSSSFromDateTime = FhirDateTime(
           yyyyMMddTHHmmssSSSDateTime,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS);
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS);
       final dateyyyyMMddTHHmmssSSSFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -535,7 +537,7 @@ void annoyinglyDetailedDateTimeTest() {
           FhirDateTime(yyyyMMddTHHmmssSSSZ);
       final dateyyyyMMddTHHmmssSSSZFromDateTime = FhirDateTime(
           yyyyMMddTHHmmssSSSZDateTime,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z);
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z);
       final dateyyyyMMddTHHmmssSSSZFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -582,7 +584,7 @@ void annoyinglyDetailedDateTimeTest() {
           FhirDateTime(yyyyMMddTHHmmssSSSZZ);
       final dateyyyyMMddTHHmmssSSSZZFromDateTime = FhirDateTime(
           yyyyMMddTHHmmssSSSZZDateTime,
-          DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ);
+          FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ);
       final dateyyyyMMddTHHmmssSSSZZFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -626,7 +628,7 @@ void annoyinglyDetailedDateTimeTest() {
       final instantDateTime = DateTime(2012, 1, 31, 12, 30, 59, 111);
       final dateInstantFromString = FhirDateTime(instant);
       final dateInstantFromDateTime =
-          FhirDateTime(instantDateTime, DateTimePrecision.instant);
+          FhirDateTime(instantDateTime, FhirDateTimePrecision.instant);
       final dateInstantFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,
@@ -661,7 +663,7 @@ void annoyinglyDetailedDateTimeTest() {
       final dateTimeDateTime = DateTime(2012, 1, 31, 12, 30, 59, 111, 111);
       final dateDateTimeFromString = FhirDateTime(dateTime);
       final dateDateTimeFromDateTime =
-          FhirDateTime(dateTimeDateTime, DateTimePrecision.dateTime);
+          FhirDateTime(dateTimeDateTime, FhirDateTimePrecision.dateTime);
       final dateDateTimeFromUnits = FhirDateTime.fromUnits(
           year: 2012,
           month: 1,

@@ -20,7 +20,7 @@ void annoyinglyDetailedDateTest() {
         expect(dateyyyyFromString.toJson(), equals(yyyy));
       });
       final dateyyyyFromDateTime =
-          FhirDate(yyyyDateTime, DateTimePrecision.yyyy);
+          FhirDate(yyyyDateTime, FhirDateTimePrecision.yyyy);
       test('dateyyyyFromDateTime', () {
         expect(dateyyyyFromDateTime.isValid, isTrue);
         expect(dateyyyyFromDateTime.valueString, equals(yyyy));
@@ -48,7 +48,7 @@ void annoyinglyDetailedDateTest() {
         expect(dateyyyyMMFromString.toJson(), equals(yyyyMM));
       });
       final dateyyyyMMFromDateTime =
-          FhirDate(yyyyMMDateTime, DateTimePrecision.yyyy_MM);
+          FhirDate(yyyyMMDateTime, FhirDateTimePrecision.yyyy_MM);
       test('dateyyyyMMFromDateTime', () {
         expect(dateyyyyMMFromDateTime.isValid, isTrue);
         expect(dateyyyyMMFromDateTime.valueString, equals(yyyyMM));
@@ -72,7 +72,7 @@ void annoyinglyDetailedDateTest() {
         expect(dateyyyyMMddFromString.toJson(), equals(yyyyMMdd));
       });
       final dateyyyyMMddFromDateTime =
-          FhirDate(yyyyMMddDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddDateTime, FhirDateTimePrecision.yyyy_MM_dd);
       test('dateyyyyMMddFromDateTime', () {
         expect(dateyyyyMMddFromDateTime.isValid, isTrue);
         expect(dateyyyyMMddFromDateTime.valueString, equals(yyyyMMdd));
@@ -94,7 +94,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTDateTime = DateTime(2012, 1, 31);
       final dateyyyyMMddTFromString = FhirDate(yyyyMMddT);
       final dateyyyyMMddTFromDateTime =
-          FhirDate(yyyyMMddTDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTFromString', () {
         expect(dateyyyyMMddTFromString.isValid, isFalse);
@@ -117,7 +117,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTZZDateTime = DateTime(2012, 1, 31);
       final dateyyyyMMddTZZFromString = FhirDate(yyyyMMddTZZ);
       final dateyyyyMMddTZZFromDateTime =
-          FhirDate(yyyyMMddTZZDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTZZDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTZZFromString', () {
         expect(dateyyyyMMddTZZFromString.isValid, isFalse);
@@ -139,7 +139,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHDateTime = DateTime(2012, 1, 31, 12);
       final dateyyyyMMddTHHFromString = FhirDate(yyyyMMddTHH);
       final dateyyyyMMddTHHFromDateTime =
-          FhirDate(yyyyMMddTHHDateTime, DateTimePrecision.yyyy_MM_dd_T_HH);
+          FhirDate(yyyyMMddTHHDateTime, FhirDateTimePrecision.yyyy_MM_dd_T_HH);
 
       test('dateyyyyMMddTHHFromString', () {
         expect(dateyyyyMMddTHHFromString.isValid, isFalse);
@@ -161,7 +161,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHZDateTime = DateTime(2012, 1, 31, 12);
       final dateyyyyMMddTHHZFromString = FhirDate(yyyyMMddTHHZ);
       final dateyyyyMMddTHHZFromDateTime =
-          FhirDate(yyyyMMddTHHZDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTHHZDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTHHZFromString', () {
         expect(dateyyyyMMddTHHZFromString.isValid, isFalse);
@@ -183,7 +183,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHZZDateTime = DateTime(2012, 1, 31, 12);
       final dateyyyyMMddTHHZZFromString = FhirDate(yyyyMMddTHHZZ);
       final dateyyyyMMddTHHZZFromDateTime =
-          FhirDate(yyyyMMddTHHZZDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTHHZZDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTHHZZFromString', () {
         expect(dateyyyyMMddTHHZZFromString.isValid, isFalse);
@@ -205,7 +205,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHmmDateTime = DateTime(2012, 1, 31, 12, 30);
       final dateyyyyMMddTHHmmFromString = FhirDate(yyyyMMddTHHmm);
       final dateyyyyMMddTHHmmFromDateTime =
-          FhirDate(yyyyMMddTHHmmDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTHHmmDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTHHmmFromString', () {
         expect(dateyyyyMMddTHHmmFromString.isValid, isFalse);
@@ -227,7 +227,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHmmZDateTime = DateTime(2012, 1, 31, 12, 30);
       final dateyyyyMMddTHHmmZFromString = FhirDate(yyyyMMddTHHmmZ);
       final dateyyyyMMddTHHmmZFromDateTime =
-          FhirDate(yyyyMMddTHHmmZDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTHHmmZDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTHHmmZFromString', () {
         expect(dateyyyyMMddTHHmmZFromString.isValid, isFalse);
@@ -249,7 +249,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHmmZZDateTime = DateTime(2012, 1, 31, 12, 30);
       final dateyyyyMMddTHHmmZZFromString = FhirDate(yyyyMMddTHHmmZZ);
       final dateyyyyMMddTHHmmZZFromDateTime =
-          FhirDate(yyyyMMddTHHmmZZDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTHHmmZZDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTHHmmZZFromString', () {
         expect(dateyyyyMMddTHHmmZZFromString.isValid, isFalse);
@@ -271,7 +271,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHmmssDateTime = DateTime(2012, 1, 31, 12, 30, 59);
       final dateyyyyMMddTHHmmssFromString = FhirDate(yyyyMMddTHHmmss);
       final dateyyyyMMddTHHmmssFromDateTime =
-          FhirDate(yyyyMMddTHHmmssDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTHHmmssDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTHHmmssFromString', () {
         expect(dateyyyyMMddTHHmmssFromString.isValid, isFalse);
@@ -293,7 +293,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHmmssZDateTime = DateTime(2012, 1, 31, 12, 30, 59);
       final dateyyyyMMddTHHmmssZFromString = FhirDate(yyyyMMddTHHmmssZ);
       final dateyyyyMMddTHHmmssZFromDateTime =
-          FhirDate(yyyyMMddTHHmmssZDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTHHmmssZDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTHHmmssZFromString', () {
         expect(dateyyyyMMddTHHmmssZFromString.isValid, isFalse);
@@ -316,7 +316,7 @@ void annoyinglyDetailedDateTest() {
       final yyyyMMddTHHmmssZZDateTime = DateTime(2012, 1, 31, 12, 30, 59);
       final dateyyyyMMddTHHmmssZZFromString = FhirDate(yyyyMMddTHHmmssZZ);
       final dateyyyyMMddTHHmmssZZFromDateTime =
-          FhirDate(yyyyMMddTHHmmssZZDateTime, DateTimePrecision.yyyy_MM_dd);
+          FhirDate(yyyyMMddTHHmmssZZDateTime, FhirDateTimePrecision.yyyy_MM_dd);
 
       test('dateyyyyMMddTHHmmssZZFromString', () {
         expect(dateyyyyMMddTHHmmssZZFromString.isValid, isFalse);
@@ -338,8 +338,8 @@ void annoyinglyDetailedDateTest() {
       const yyyyMMddTHHmmssSSS = '2012-01-31T12:30:59.001';
       final yyyyMMddTHHmmssSSSDateTime = DateTime(2012, 1, 31, 12, 30, 59, 1);
       final dateyyyyMMddTHHmmssSSSFromString = FhirDate(yyyyMMddTHHmmssSSS);
-      final dateyyyyMMddTHHmmssSSSFromDateTime =
-          FhirDate(yyyyMMddTHHmmssSSSDateTime, DateTimePrecision.yyyy_MM_dd);
+      final dateyyyyMMddTHHmmssSSSFromDateTime = FhirDate(
+          yyyyMMddTHHmmssSSSDateTime, FhirDateTimePrecision.yyyy_MM_dd);
       test('dateyyyyMMddTHHmmssSSSFromString', () {
         expect(dateyyyyMMddTHHmmssSSSFromString.isValid, isFalse);
         expect(dateyyyyMMddTHHmmssSSSFromString.valueString, equals(yyyyMMdd));
@@ -412,7 +412,7 @@ void annoyinglyDetailedDateTest() {
       final instantDateTime = DateTime(2012, 1, 31, 12, 30, 59, 111);
       final dateInstantFromString = FhirDate(instant);
       final dateInstantFromDateTime =
-          FhirDate(instantDateTime, DateTimePrecision.instant);
+          FhirDate(instantDateTime, FhirDateTimePrecision.instant);
 
       test('dateInstantFromString', () {
         expect(dateInstantFromString.isValid, isFalse);
@@ -432,7 +432,7 @@ void annoyinglyDetailedDateTest() {
       final dateTimeDateTime = DateTime(2012, 1, 31, 12, 30, 59, 111, 111);
       final dateDateTimeFromString = FhirDate(dateTime);
       final dateDateTimeFromDateTime =
-          FhirDate(dateTimeDateTime, DateTimePrecision.dateTime);
+          FhirDate(dateTimeDateTime, FhirDateTimePrecision.dateTime);
 
       test('dateDateTimeFromString', () {
         expect(dateDateTimeFromString.isValid, isFalse);
