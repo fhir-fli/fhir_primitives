@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 void annoyinglyDetailedInstantTest() {
   final offset =
-      timeZoneOffsetToString(DateTime.now().timeZoneOffset.inHours.toDouble());
+      timeZoneOffsetToString(DateTime(2020).timeZoneOffset.inHours.toDouble());
 
   group('FhirInstant Tests', () {
     final yyyy = '2012';

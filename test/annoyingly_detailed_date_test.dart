@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 void annoyinglyDetailedDateTest() {
   final offset =
-      timeZoneOffsetToString(DateTime.now().timeZoneOffset.inHours.toDouble());
+      timeZoneOffsetToString(DateTime(2020).timeZoneOffset.inHours.toDouble());
   const yyyyMMdd = '2012-01-31';
   final yyyyMMddDateTime = DateTime(2012, 1, 31);
   group('FhirDate Tests', () {
