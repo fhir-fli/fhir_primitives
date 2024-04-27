@@ -35,10 +35,8 @@ enum FhirDateTimePrecision {
   yyyy_MM_dd_T_HH_mm_ss_SSSZZ,
   dateTime,
   instant,
-  invalid,
-}
+  invalid;
 
-extension FhirDateTimePrecisionExtension on FhirDateTimePrecision {
   bool get isValidInstantPrecision => <FhirDateTimePrecision>[
         FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z,
         FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ,
@@ -901,9 +899,12 @@ FhirDateTimePrecision precisionFromMap(Map<String, num?> map) {
   }
 }
 
-const FhirDateTimePrecision fullDatePrecision = FhirDateTimePrecision.yyyy_MM_dd;
-const FhirDateTimePrecision fullDateTimePrecision = FhirDateTimePrecision.dateTime;
-const FhirDateTimePrecision fullInstantPrecision = FhirDateTimePrecision.instant;
+const FhirDateTimePrecision fullDatePrecision =
+    FhirDateTimePrecision.yyyy_MM_dd;
+const FhirDateTimePrecision fullDateTimePrecision =
+    FhirDateTimePrecision.dateTime;
+const FhirDateTimePrecision fullInstantPrecision =
+    FhirDateTimePrecision.instant;
 
 String timeZoneOffsetToString(double? offset) {
   final int offsetHours = offset?.toInt() ?? 0; // Extract hours from offset
