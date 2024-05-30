@@ -245,123 +245,59 @@ enum FhirDateTimePrecision {
       (secondsPrecision && precision.secondsPrecision);
 
   String dateTimeToString(DateTime dateTime) {
+    final String year = dateTime.year.toString().padLeft(4, '0');
+    final String month = dateTime.month.toString().padLeft(2, '0');
+    final String day = dateTime.day.toString().padLeft(2, '0');
+    final String hour = dateTime.hour.toString().padLeft(2, '0');
+    final String minute = dateTime.minute.toString().padLeft(2, '0');
+    final String second = dateTime.second.toString().padLeft(2, '0');
+    final String millisecond = dateTime.millisecond.toString().padLeft(3, '0');
+    final String microsecond = dateTime.microsecond.toString().padLeft(3, '0');
+    final String offset = timeZoneOffsetToString(
+        dateTime.timeZoneOffset.inHours.toDouble() +
+            dateTime.timeZoneOffset.inMinutes.toDouble() / 60);
+
     switch (this) {
       case FhirDateTimePrecision.yyyy:
-        return dateTime.year.toString();
+        return year;
       case FhirDateTimePrecision.yyyy_MM:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}';
+        return '$year-$month';
       case FhirDateTimePrecision.yyyy_MM_dd:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}';
+        return '$year-$month-$day';
       case FhirDateTimePrecision.yyyy_MM_dd_T_Z:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}TZ';
+        return '$year-$month-${day}TZ';
       case FhirDateTimePrecision.yyyy_MM_dd_T_ZZ:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
-            '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
-            '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
+        return '$year-$month-${day}T$offset';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}';
+        return '$year-$month-${day}T$hour';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}Z';
+        return '$year-$month-${day}T${hour}Z';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}'
-            '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
-            '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
-            '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
+        return '$year-$month-${day}T$hour$offset';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}';
+        return '$year-$month-${day}T$hour:$minute';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}Z';
+        return '$year-$month-${day}T$hour:${minute}Z';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}'
-            '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
-            '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
-            '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
+        return '$year-$month-${day}T$hour:$minute$offset';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}:'
-            '${dateTime.second.toString().padLeft(2, '0')}';
+        return '$year-$month-${day}T$hour:$minute:$second';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}:'
-            '${dateTime.second.toString().padLeft(2, '0')}Z';
+        return '$year-$month-${day}T$hour:$minute:${second}Z';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}T'
-            '${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}:'
-            '${dateTime.second.toString().padLeft(2, '0')}'
-            '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
-            '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
-            '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
+        return '$year-$month-${day}T$hour:$minute:$second$offset';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}'
-            'T${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}:'
-            '${dateTime.second.toString().padLeft(2, '0')}.'
-            '${dateTime.millisecond.toString().padLeft(3, '0')}';
+        return '$year-$month-${day}T$hour:$minute:$second.$millisecond';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}'
-            'T${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}:'
-            '${dateTime.second.toString().padLeft(2, '0')}.'
-            '${dateTime.millisecond.toString().padLeft(3, '0')}Z';
+        return '$year-$month-${day}T$hour:$minute:$second.${millisecond}Z';
       case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
-        return '${dateTime.year.toString().padLeft(4, '0')}-'
-            '${dateTime.month.toString().padLeft(2, '0')}-'
-            '${dateTime.day.toString().padLeft(2, '0')}'
-            'T${dateTime.hour.toString().padLeft(2, '0')}:'
-            '${dateTime.minute.toString().padLeft(2, '0')}:'
-            '${dateTime.second.toString().padLeft(2, '0')}.'
-            '${dateTime.millisecond.toString().padLeft(3, '0')}'
-            '${dateTime.timeZoneOffset.isNegative ? '-' : '+'}'
-            '${(dateTime.timeZoneOffset.abs().inMinutes / 60).round().toString().padLeft(2, "0")}:'
-            '${(dateTime.timeZoneOffset.inMinutes % 60).toString().padLeft(2, "0")}';
+        return '$year-$month-${day}T$hour:$minute:$second.$millisecond$offset';
       case FhirDateTimePrecision.dateTime:
-        return dateTime.toString();
+        return '$year-$month-${day}T$hour:$minute:$second.$millisecond$microsecond$offset';
       case FhirDateTimePrecision.instant:
-        return dateTime.toIso8601String();
+        return '$year-$month-${day}T$hour:$minute:$second.$millisecond$offset';
       case FhirDateTimePrecision.invalid:
-        return dateTime.toString();
+        return '';
     }
   }
 
@@ -557,27 +493,25 @@ enum FhirDateTimePrecision {
           return DateTime.tryParse('${string.substring(0, 13)}:00:00Z');
         case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
           {
-            {
-              final DateTime? dateTime = DateTime.tryParse(
-                  '${string.substring(0, 13)}:00:00${string.substring(13)}');
-              final DateTime? localDateTime = dateTime?.toLocal();
-              final Duration? localOffset = localDateTime?.timeZoneOffset;
-              final int actualOffset = (localOffset?.inHours ?? 0) +
-                  (int.tryParse(string.split(':').first) ?? 0);
-              final DateTime? actualDateTime =
-                  localDateTime?.add(Duration(hours: actualOffset));
-              return actualDateTime == null
-                  ? null
-                  : DateTime(
-                      actualDateTime.year,
-                      actualDateTime.month,
-                      actualDateTime.day,
-                      actualDateTime.hour - actualOffset,
-                      actualDateTime.minute,
-                      actualDateTime.second,
-                      actualDateTime.millisecond,
-                      actualDateTime.microsecond);
-            }
+            final DateTime? dateTime = DateTime.tryParse(
+                '${string.substring(0, 13)}:00:00${string.substring(13)}');
+            final DateTime? localDateTime = dateTime?.toLocal();
+            final Duration? localOffset = localDateTime?.timeZoneOffset;
+            final int actualOffset = (localOffset?.inHours ?? 0) +
+                (int.tryParse(string.split(':').first) ?? 0);
+            final DateTime? actualDateTime =
+                localDateTime?.add(Duration(hours: actualOffset));
+            return actualDateTime == null
+                ? null
+                : DateTime(
+                    actualDateTime.year,
+                    actualDateTime.month,
+                    actualDateTime.day,
+                    actualDateTime.hour - actualOffset,
+                    actualDateTime.minute,
+                    actualDateTime.second,
+                    actualDateTime.millisecond,
+                    actualDateTime.microsecond);
           }
         case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
           return DateTime.tryParse(string.substring(0, 16));
@@ -592,27 +526,25 @@ enum FhirDateTimePrecision {
           return DateTime.tryParse('${string.substring(0, 19)}Z');
         case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
           {
-            {
-              final DateTime? dateTime = DateTime.tryParse(
-                  '${string.substring(0, 19)}${string.substring(19)}');
-              final DateTime? localDateTime = dateTime?.toLocal();
-              final Duration? localOffset = localDateTime?.timeZoneOffset;
-              final int actualOffset = (localOffset?.inHours ?? 0) +
-                  (int.tryParse(string.split(':').first) ?? 0);
-              final DateTime? actualDateTime =
-                  localDateTime?.add(Duration(hours: actualOffset));
-              return actualDateTime == null
-                  ? null
-                  : DateTime(
-                      actualDateTime.year,
-                      actualDateTime.month,
-                      actualDateTime.day,
-                      actualDateTime.hour - actualOffset,
-                      actualDateTime.minute,
-                      actualDateTime.second,
-                      actualDateTime.millisecond,
-                      actualDateTime.microsecond);
-            }
+            final DateTime? dateTime = DateTime.tryParse(
+                '${string.substring(0, 19)}${string.substring(19)}');
+            final DateTime? localDateTime = dateTime?.toLocal();
+            final Duration? localOffset = localDateTime?.timeZoneOffset;
+            final int actualOffset = (localOffset?.inHours ?? 0) +
+                (int.tryParse(string.split(':').first) ?? 0);
+            final DateTime? actualDateTime =
+                localDateTime?.add(Duration(hours: actualOffset));
+            return actualDateTime == null
+                ? null
+                : DateTime(
+                    actualDateTime.year,
+                    actualDateTime.month,
+                    actualDateTime.day,
+                    actualDateTime.hour - actualOffset,
+                    actualDateTime.minute,
+                    actualDateTime.second,
+                    actualDateTime.millisecond,
+                    actualDateTime.microsecond);
           }
         case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
           return DateTime.tryParse(string.substring(0, 23));
@@ -620,27 +552,25 @@ enum FhirDateTimePrecision {
           return DateTime.tryParse('${string.substring(0, 23)}Z');
         case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
           {
-            {
-              final DateTime? dateTime = DateTime.tryParse(
-                  '${string.substring(0, 23)}${string.substring(23)}');
-              final DateTime? localDateTime = dateTime?.toLocal();
-              final Duration? localOffset = localDateTime?.timeZoneOffset;
-              final int actualOffset = (localOffset?.inHours ?? 0) +
-                  (int.tryParse(string.split(':').first) ?? 0);
-              final DateTime? actualDateTime =
-                  localDateTime?.add(Duration(hours: actualOffset));
-              return actualDateTime == null
-                  ? null
-                  : DateTime(
-                      actualDateTime.year,
-                      actualDateTime.month,
-                      actualDateTime.day,
-                      actualDateTime.hour - actualOffset,
-                      actualDateTime.minute,
-                      actualDateTime.second,
-                      actualDateTime.millisecond,
-                      actualDateTime.microsecond);
-            }
+            final DateTime? dateTime = DateTime.tryParse(
+                '${string.substring(0, 23)}${string.substring(23)}');
+            final DateTime? localDateTime = dateTime?.toLocal();
+            final Duration? localOffset = localDateTime?.timeZoneOffset;
+            final int actualOffset = (localOffset?.inHours ?? 0) +
+                (int.tryParse(string.split(':').first) ?? 0);
+            final DateTime? actualDateTime =
+                localDateTime?.add(Duration(hours: actualOffset));
+            return actualDateTime == null
+                ? null
+                : DateTime(
+                    actualDateTime.year,
+                    actualDateTime.month,
+                    actualDateTime.day,
+                    actualDateTime.hour - actualOffset,
+                    actualDateTime.minute,
+                    actualDateTime.second,
+                    actualDateTime.millisecond,
+                    actualDateTime.microsecond);
           }
         case FhirDateTimePrecision.dateTime:
           return DateTime.tryParse(string);
