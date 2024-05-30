@@ -1,7 +1,6 @@
-// Dart imports:
+// Package imports:
 import 'dart:convert';
 
-// Package imports:
 import 'package:meta/meta.dart';
 
 // Project imports:
@@ -33,10 +32,12 @@ class FhirInstant extends FhirDateTimeBase {
               ? precision ?? FhirDateTimePrecision.instant
               : precision) as FhirInstant;
 
-  factory FhirInstant.fromJson(String json, {FhirDateTimePrecision? precision}) =>
+  factory FhirInstant.fromJson(String json,
+          {FhirDateTimePrecision? precision}) =>
       FhirInstant(json, precision);
 
-  factory FhirInstant.fromYaml(String yaml, [FhirDateTimePrecision? precision]) =>
+  factory FhirInstant.fromYaml(String yaml,
+          [FhirDateTimePrecision? precision]) =>
       FhirInstant(jsonDecode(jsonEncode(yaml)), precision);
 
   factory FhirInstant.fromUnits({

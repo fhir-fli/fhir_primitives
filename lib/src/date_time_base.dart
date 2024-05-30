@@ -7,6 +7,7 @@ import '../fhir_primitives.dart';
 @immutable
 abstract class FhirDateTimeBase
     implements FhirPrimitiveBase, Comparable<FhirDateTimeBase> {
+  @override
   final bool isValid;
   final FhirDateTimePrecision precision;
   final Exception? parseError;
@@ -22,12 +23,33 @@ abstract class FhirDateTimeBase
   final num timeZoneOffset;
   final bool isUtc;
 
+  const FhirDateTimeBase({
+    required this.isValid,
+    required this.precision,
+    required this.input,
+    required this.parseError,
+    required this.year,
+    required this.month,
+    required this.day,
+    required this.hour,
+    required this.minute,
+    required this.second,
+    required this.millisecond,
+    required this.microsecond,
+    required this.timeZoneOffset,
+    required this.isUtc,
+  });
+
   @override
   int get hashCode => input.toString().hashCode;
+
   @override
   DateTime get value => valueDateTime;
+
   DateTime get valueDateTime => precision.dateTimeFromMap(toMap());
+
   String get valueString => _string;
+
   @override
   String toString() => _string;
 
@@ -49,8 +71,13 @@ abstract class FhirDateTimeBase
   }
 
   String toIso8601String() => valueDateTime.toIso8601String();
+
+  @override
   String toJson() => input.toString();
+
+  @override
   String toYaml() => input.toString();
+
   Map<String, num> toMap() => <String, num>{
         'year': year,
         'month': month,
@@ -63,23 +90,6 @@ abstract class FhirDateTimeBase
         'timeZoneOffset': timeZoneOffset,
         'isUtc': isUtc ? 0 : 1,
       };
-
-  const FhirDateTimeBase({
-    required this.isValid,
-    required this.precision,
-    required this.input,
-    required this.parseError,
-    required this.year,
-    required this.month,
-    required this.day,
-    required this.hour,
-    required this.minute,
-    required this.second,
-    required this.millisecond,
-    required this.microsecond,
-    required this.timeZoneOffset,
-    required this.isUtc,
-  });
 
   static String _cleanInput(String inValue) {
     inValue = inValue.trim();
@@ -170,13 +180,8 @@ abstract class FhirDateTimeBase
                     "$T cannot be constructed from '$output' (unsupported type).");
   }
 
-  /// Trying to consolidate dynamic constructors into a single factory, that
-  /// has now turned into a static method, but functions the same way. The input
-  /// can be a String, a dart DateTime, a FhirDateTimeBase, or an other.
-  static FhirDateTimeBase constructor<T>(
-    dynamic inValue, [
-    FhirDateTimePrecision? precision,
-  ]) {
+  static FhirDateTimeBase constructor<T>(dynamic inValue,
+      [FhirDateTimePrecision? precision]) {
     String? input;
     String? exception;
     Map<String, num?>? dateTimeMap;
@@ -261,13 +266,8 @@ abstract class FhirDateTimeBase
 
     precision ??= precisionFromMap(dateTimeMap);
 
-    return _constructor<T>(
-      dateTimeMap,
-      precision,
-      null,
-      precision.dateTimeMapToString<T>(dateTimeMap),
-      true,
-    );
+    return _constructor<T>(dateTimeMap, precision, null,
+        precision.dateTimeMapToString<T>(dateTimeMap), true);
   }
 
   InvalidTypes<FhirDateTimeBase> comparisonError(
@@ -277,9 +277,7 @@ abstract class FhirDateTimeBase
           'Argument 1: $value (${value.runtimeType})\n'
           'Argument 2: $o (${o.runtimeType})');
 
-  /// Comparison method for FhirDateTimes
   bool? _compare(Comparator comparator, Object o) {
-    /// first, easy check if they're identical
     if (identical(this, o)) {
       switch (comparator) {
         case Comparator.eq:
@@ -295,17 +293,13 @@ abstract class FhirDateTimeBase
       }
     }
 
-    /// create a left-hand-side value
     final FhirDateTime lhs = constructor<FhirDateTime>(this) as FhirDateTime;
 
-    /// create a right-hand-side value
     final FhirDateTime? rhs =
         o is FhirDateTimeBase || o is DateTime || o is String
             ? constructor<FhirDateTime>(o) as FhirDateTime
             : null;
 
-    /// If compared Object is null, is invalid, or if this is invalid, we don't
-    /// continue to try the comparison
     if (rhs == null) {
       return false;
     } else if (!rhs.isValid ||
@@ -313,11 +307,8 @@ abstract class FhirDateTimeBase
         rhs.precision == FhirDateTimePrecision.invalid ||
         lhs.precision == FhirDateTimePrecision.invalid) {
       if (comparator == Comparator.eq) {
-        /// if this is valid rhs is null or invalid, so they are not equal
         return false;
       } else {
-        /// otherwise passed value is null or invalid OR this is invalid, or all
-        /// of the above, and we throw and error saying as much.
         throw InvalidTypes<FhirDateTimeBase>(
             'Two values were passed to the date time '
             '"$comparator" comparison operator, '
@@ -335,54 +326,44 @@ abstract class FhirDateTimeBase
           Comparator comparator, num value1, num value2, bool isPrecision) {
         switch (comparator) {
           case Comparator.eq:
-            {
-              if (value1 != value2) {
-                return false;
-              } else if (value1 == value2 &&
-                  isPrecision &&
-                  equivalentPrecisions) {
-                return true;
-              }
+            if (value1 != value2) {
+              return false;
+            } else if (value1 == value2 &&
+                isPrecision &&
+                equivalentPrecisions) {
+              return true;
             }
           case Comparator.gt:
-            {
-              if (value1 > value2) {
-                return true;
-              } else if (value1 < value2) {
-                return false;
-              }
+            if (value1 > value2) {
+              return true;
+            } else if (value1 < value2) {
+              return false;
             }
           case Comparator.gte:
-            {
-              if (value1 < value2) {
-                return false;
-              } else if (value1 > value2) {
-                return true;
-              } else if (value1 >= value2 &&
-                  isPrecision &&
-                  equivalentPrecisions) {
-                return true;
-              }
+            if (value1 < value2) {
+              return false;
+            } else if (value1 > value2) {
+              return true;
+            } else if (value1 >= value2 &&
+                isPrecision &&
+                equivalentPrecisions) {
+              return true;
             }
           case Comparator.lt:
-            {
-              if (value1 < value2) {
-                return true;
-              } else if (value1 > value2) {
-                return false;
-              }
+            if (value1 < value2) {
+              return true;
+            } else if (value1 > value2) {
+              return false;
             }
           case Comparator.lte:
-            {
-              if (value1 > value2) {
-                return false;
-              } else if (value1 < value2) {
-                return true;
-              } else if (value1 == value2 &&
-                  isPrecision &&
-                  equivalentPrecisions) {
-                return true;
-              }
+            if (value1 > value2) {
+              return false;
+            } else if (value1 < value2) {
+              return true;
+            } else if (value1 == value2 &&
+                isPrecision &&
+                equivalentPrecisions) {
+              return true;
             }
         }
         return null;
@@ -507,7 +488,6 @@ abstract class FhirDateTimeBase
 
   static FhirDateTimeBase plus<T>(
       FhirDateTimeBase fhirDateTimeBase, ExtendedDuration o) {
-    // Adjust years and months first
     final DateTime dateTime = DateTime(
       fhirDateTimeBase.year + o.years,
       fhirDateTimeBase.month + o.months,

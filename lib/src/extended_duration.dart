@@ -142,6 +142,20 @@ class ExtendedDuration {
     );
   }
 
+  Duration toStandardDuration() {
+    return Duration(
+      days: days +
+          (weeks * 7) +
+          (months * 30) +
+          (years * 365), // Approximate conversion
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+      milliseconds: milliseconds,
+      microseconds: microseconds,
+    );
+  }
+
   static final RegExp yearRegex = RegExp(r'(\d+)\s*year(s)?');
   static final RegExp monthRegex = RegExp(r'(\d+)\s*month(s)?');
   static final RegExp weekRegex = RegExp(r'(\d+)\s*week(s)?');

@@ -1,7 +1,6 @@
-// Dart imports:
+// Package imports:
 import 'dart:convert';
 
-// Package imports:
 import 'package:meta/meta.dart';
 
 // Project imports:
