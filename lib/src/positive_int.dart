@@ -37,7 +37,7 @@ class FhirPositiveInt extends FhirNumber {
       : yaml is YamlMap
           ? FhirPositiveInt.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirPositiveInt>(
-              'FormatException: "$json" is not a valid Yaml string or YamlMap.');
+              'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
 
   @override
   int? get value => valueNumber as int?;

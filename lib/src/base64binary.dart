@@ -13,16 +13,6 @@ class FhirBase64Binary implements FhirPrimitiveBase {
   const FhirBase64Binary._(
       this._valueString, this._valueBase64Binary, this._isValid);
 
-// TODO(TILO): This regexp is the most correct way to check the validity of a base64
-// But crashes the library on release builds with large base64 strings (images)
-
-//  static final RegExp _base64RegExp = RegExp(
-//      r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$');
-
-/*  factory FhirBase64Binary(String inValue) =>
-      _base64RegExp.hasMatch(inValue)
-          ? FhirBase64Binary._(inValue, inValue, true)
-          : FhirBase64Binary._(inValue, null, false); */
   factory FhirBase64Binary(dynamic inValue) =>
       inValue is String && inValue.length % 4 == 0
           ? FhirBase64Binary._(inValue, inValue, true)
@@ -35,12 +25,13 @@ class FhirBase64Binary implements FhirPrimitiveBase {
       : yaml is YamlMap
           ? FhirBase64Binary.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirBase64Binary>(
-              'FormatException: "$json" is not a valid Yaml string or YamlMap.');
+              'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
 
   final String _valueString;
   final String? _valueBase64Binary;
   final bool _isValid;
 
+  @override
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
@@ -49,7 +40,9 @@ class FhirBase64Binary implements FhirPrimitiveBase {
 
   @override
   String toString() => _valueString;
+  @override
   String toJson() => _valueString;
+  @override
   String toYaml() => _valueString;
 
   @override

@@ -3,7 +3,7 @@
 import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:test/test.dart';
 
-void fhirDateTimeTest() {
+void main() {
   final issued = FhirDateTime(DateTime.now());
   final offset = timeZoneOffsetToString(issued.timeZoneOffset.toDouble());
   test('Check DateTime type with the regex', () {

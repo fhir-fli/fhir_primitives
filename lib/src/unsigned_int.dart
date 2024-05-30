@@ -33,13 +33,11 @@ class FhirUnsignedInt extends FhirNumber {
   factory FhirUnsignedInt.fromJson(dynamic json) => FhirUnsignedInt(json);
 
   factory FhirUnsignedInt.fromYaml(dynamic yaml) => yaml is String
-      ? FhirUnsignedInt.fromJson(
-          jsonDecode(jsonEncode(loadYaml(yaml))) as Map<String, dynamic>)
+      ? FhirUnsignedInt.fromJson(jsonDecode(jsonEncode(loadYaml(yaml))))
       : yaml is YamlMap
-          ? FhirUnsignedInt.fromJson(
-              jsonDecode(jsonEncode(yaml)) as Map<String, dynamic>)
+          ? FhirUnsignedInt.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirUnsignedInt>(
-              'FormatException: "$json" is not a valid Yaml string or YamlMap.');
+              'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
 
   @override
   int? get value => valueNumber as int?;

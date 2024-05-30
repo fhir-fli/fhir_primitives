@@ -34,13 +34,14 @@ class FhirBoolean implements FhirPrimitiveBase {
       : yaml is YamlMap
           ? FhirBoolean.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirBoolean>(
-              'FormatException: "$json" is not a valid Yaml string or YamlMap.');
+              'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
 
   final String _valueString;
   final bool? _valueBoolean;
   final bool _isValid;
   final bool _isTrueBoolean;
 
+  @override
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
@@ -49,13 +50,15 @@ class FhirBoolean implements FhirPrimitiveBase {
 
   @override
   String toString() => _valueString;
+  @override
   dynamic toJson() => _isTrueBoolean ? _valueBoolean : _valueString;
+  @override
   dynamic toYaml() => _isTrueBoolean ? _valueBoolean : _valueString;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FhirBoolean && other.value == _valueBoolean ||
-      other is bool && other == _valueBoolean ||
-      other is String && other == _valueString;
+      (other is FhirBoolean && other.value == _valueBoolean) ||
+      (other is bool && other == _valueBoolean) ||
+      (other is String && other == _valueString);
 }

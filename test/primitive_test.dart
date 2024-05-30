@@ -3,7 +3,7 @@
 import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:test/test.dart';
 
-void primitiveTest() {
+void main() {
   final offset =
       timeZoneOffsetToString(DateTime(2020).timeZoneOffset.inHours.toDouble());
   test('fdtyearstring', () {

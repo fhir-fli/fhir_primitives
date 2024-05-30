@@ -44,7 +44,7 @@ class FhirDecimal extends FhirNumber {
       : yaml is YamlMap
           ? FhirDecimal.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirDecimal>(
-              'FormatException: "$json" is not a valid Yaml string or YamlMap.');
+              'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
 
   final bool isInt;
   @override

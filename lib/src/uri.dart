@@ -30,12 +30,13 @@ class FhirUri implements FhirPrimitiveBase {
       : yaml is YamlMap
           ? FhirUri.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirUri>(
-              'FormatException: "$json" is not a valid Yaml string or YamlMap.');
+              'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
 
   final String _valueString;
   final Uri? _valueUri;
   final bool _isValid;
 
+  @override
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
@@ -44,13 +45,15 @@ class FhirUri implements FhirPrimitiveBase {
 
   @override
   String toString() => _valueString;
+  @override
   String toJson() => _valueString;
+  @override
   String toYaml() => _valueString;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FhirUri && other.value == _valueUri ||
-      other is Uri && other == _valueUri ||
-      other is String && other == _valueString;
+      (other is FhirUri && other.value == _valueUri) ||
+      (other is Uri && other == _valueUri) ||
+      (other is String && other == _valueString);
 }

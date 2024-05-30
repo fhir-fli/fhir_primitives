@@ -3,7 +3,7 @@
 import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:test/test.dart';
 
-void fhirDateTest() {
+void main() {
   group('FhirDate Tests', () {
     test('Valid FhirDate String', () {
       final fhirDate = FhirDate('2023-12-31');

@@ -3,7 +3,7 @@
 import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:test/test.dart';
 
-void fhirInstantTest() {
+void main() {
   group('FhirInstant Tests', () {
     test('Check Instant type with the regex', () {
       final issued = FhirInstant(DateTime.now()).toString();

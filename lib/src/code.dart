@@ -30,12 +30,13 @@ class FhirCode implements FhirPrimitiveBase {
       : yaml is YamlMap
           ? FhirCode.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirCode>(
-              'FormatException: "$json" is not a valid Yaml string or YamlMap.');
+              'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
 
   final String _valueString;
   final String? _valueCode;
   final bool _isValid;
 
+  @override
   bool get isValid => _isValid;
   @override
   int get hashCode => _valueString.hashCode;
@@ -44,7 +45,9 @@ class FhirCode implements FhirPrimitiveBase {
 
   @override
   String toString() => _valueString;
+  @override
   String toJson() => _valueString;
+  @override
   String toYaml() => _valueString;
 
   @override

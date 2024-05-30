@@ -35,12 +35,13 @@ class FhirInteger64 implements FhirPrimitiveBase, Comparable<FhirInteger64> {
       : yaml is YamlMap
           ? FhirInteger64.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirInteger64>(
-              'FormatException: "$json" is not a valid Yaml string or YamlMap.');
+              'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
 
   @override
   BigInt? get value => valueNumber;
   final String valueString;
   final BigInt? valueNumber;
+  @override
   final bool isValid;
 
   @override
@@ -48,7 +49,9 @@ class FhirInteger64 implements FhirPrimitiveBase, Comparable<FhirInteger64> {
 
   @override
   String toString() => valueString;
+  @override
   String toJson() => valueString;
+  @override
   String toYaml() => valueString;
 
   @override

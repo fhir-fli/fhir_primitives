@@ -10,6 +10,7 @@ abstract class FhirNumber implements FhirPrimitiveBase, Comparable<FhirNumber> {
 
   final String valueString;
   final num? valueNumber;
+  @override
   final bool isValid;
 
   @override
@@ -20,7 +21,9 @@ abstract class FhirNumber implements FhirPrimitiveBase, Comparable<FhirNumber> {
   @override
   String toString() => valueString;
 
+  @override
   dynamic toJson() => valueNumber;
+  @override
   dynamic toYaml() => valueNumber;
 
   @override

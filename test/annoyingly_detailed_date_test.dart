@@ -3,7 +3,7 @@
 import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:test/test.dart';
 
-void annoyinglyDetailedDateTest() {
+void main() {
   final offset =
       timeZoneOffsetToString(DateTime(2020).timeZoneOffset.inHours.toDouble());
   const yyyyMMdd = '2012-01-31';
