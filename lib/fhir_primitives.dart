@@ -1,3 +1,4 @@
+export 'src/base.dart';
 export 'src/base64binary.dart';
 export 'src/boolean.dart';
 export 'src/canonical.dart';
