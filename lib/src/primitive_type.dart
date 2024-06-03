@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 import 'primitive_types.dart';
 
 @immutable
-abstract class PrimitiveType extends Base {
+abstract class PrimitiveType extends FhirBase {
   /// Returns the primitive value of the FHIR type.
   dynamic get value;
 

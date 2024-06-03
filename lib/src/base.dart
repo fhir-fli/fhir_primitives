@@ -1,8 +1,8 @@
 import 'package:meta/meta.dart';
 
-/// [Base] Base definition for all FHIR resources.
+/// [FhirBase] Base definition for all FHIR resources.
 @immutable
-abstract class Base {
+abstract class FhirBase {
   String get fhirType;
 
   /// Returns a JSON representation of the FHIR primitive.
