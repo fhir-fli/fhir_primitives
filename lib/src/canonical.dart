@@ -5,11 +5,10 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
-class FhirCanonical implements FhirPrimitiveBase {
+class FhirCanonical implements PrimitiveType {
   const FhirCanonical._(this._valueString, this._valueCanonical, this._isValid);
 
   factory FhirCanonical(dynamic inValue) {
@@ -35,6 +34,9 @@ class FhirCanonical implements FhirPrimitiveBase {
           ? FhirCanonical.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirCanonical>(
               'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
+
+  @override
+  String get fhirType => 'canonical';
 
   final String _valueString;
   final Uri? _valueCanonical;

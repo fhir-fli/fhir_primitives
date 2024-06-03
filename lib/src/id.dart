@@ -6,8 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart' as uuid;
 import 'package:yaml/yaml.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 /// returns the same resource with a new ID (even if there is already an ID present)
 FhirId newId() => FhirId(const uuid.Uuid().v4());
@@ -15,7 +14,7 @@ FhirId newId() => FhirId(const uuid.Uuid().v4());
 String newIdString() => const uuid.Uuid().v4();
 
 @immutable
-class FhirId implements FhirPrimitiveBase {
+class FhirId implements PrimitiveType {
   const FhirId._(this._valueString, this._valueId, this._isValid);
 
   factory FhirId(dynamic inValue) =>
@@ -31,6 +30,9 @@ class FhirId implements FhirPrimitiveBase {
           ? FhirId.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirId>(
               'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
+
+  @override
+  String get fhirType => 'id';
 
   final String _valueString;
   final String? _valueId;

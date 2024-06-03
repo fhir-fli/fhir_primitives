@@ -5,11 +5,10 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
-class FhirInteger64 implements FhirPrimitiveBase, Comparable<FhirInteger64> {
+class FhirInteger64 implements PrimitiveType, Comparable<FhirInteger64> {
   const FhirInteger64._(this.valueString, this.valueNumber, this.isValid);
 
   factory FhirInteger64(dynamic inValue) {
@@ -36,6 +35,9 @@ class FhirInteger64 implements FhirPrimitiveBase, Comparable<FhirInteger64> {
           ? FhirInteger64.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirInteger64>(
               'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
+
+  @override
+  String get fhirType => 'integer64';
 
   @override
   BigInt? get value => valueNumber;

@@ -1,12 +1,11 @@
 // Package imports:
 import 'package:meta/meta.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
 abstract class FhirDateTimeBase
-    implements FhirPrimitiveBase, Comparable<FhirDateTimeBase> {
+    implements PrimitiveType, Comparable<FhirDateTimeBase> {
   @override
   final bool isValid;
   final FhirDateTimePrecision precision;

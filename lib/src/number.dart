@@ -1,11 +1,10 @@
 // Package imports:
 import 'package:meta/meta.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
-abstract class FhirNumber implements FhirPrimitiveBase, Comparable<FhirNumber> {
+abstract class FhirNumber implements PrimitiveType, Comparable<FhirNumber> {
   const FhirNumber(this.valueString, this.valueNumber, this.isValid);
 
   final String valueString;

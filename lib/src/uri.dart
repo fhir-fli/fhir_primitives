@@ -5,11 +5,10 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
-class FhirUri implements FhirPrimitiveBase {
+class FhirUri implements PrimitiveType {
   const FhirUri._(this._valueString, this._valueUri, this._isValid);
 
   factory FhirUri(dynamic inValue) {
@@ -31,6 +30,9 @@ class FhirUri implements FhirPrimitiveBase {
           ? FhirUri.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirUri>(
               'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
+
+  @override
+  String get fhirType => 'uri';
 
   final String _valueString;
   final Uri? _valueUri;

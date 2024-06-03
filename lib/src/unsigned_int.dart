@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
-// Project imports:
 import 'number.dart';
 import 'primitive_type_exceptions.dart';
 
@@ -38,6 +37,9 @@ class FhirUnsignedInt extends FhirNumber {
           ? FhirUnsignedInt.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirUnsignedInt>(
               'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
+
+  @override
+  String get fhirType => 'unsignedInt';
 
   @override
   int? get value => valueNumber as int?;

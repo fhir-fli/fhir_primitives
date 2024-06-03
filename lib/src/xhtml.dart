@@ -1,13 +1,13 @@
 // Package imports:
 import 'package:xml/xml.dart';
 
-// HtmlCheckerParser : Boolean
+// FhirXhtml : Boolean
 ///
 /// When invoked on a single xhtml element returns true if the rules around
 /// HTML usage are met, and false if they are not. The return value is empty
 /// on any other kind of element, or a collection of xhtml elements.
-class HtmlCheckerParser {
-  HtmlCheckerParser();
+class FhirXhtml {
+  FhirXhtml();
 
   List<dynamic> execute(List<dynamic> results, Map<String, dynamic> passed) {
     if (results.length != 1) {

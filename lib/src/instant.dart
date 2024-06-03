@@ -3,8 +3,7 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
 class FhirInstant extends FhirDateTimeBase {
@@ -64,6 +63,9 @@ class FhirInstant extends FhirDateTimeBase {
         timeZoneOffset: timeZoneOffset,
         isUtc: isUtc ?? false,
       ) as FhirInstant;
+
+  @override
+  String get fhirType => 'instant';
 
   @override
   bool operator ==(Object other) => isEqual(other) ?? false;

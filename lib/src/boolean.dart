@@ -5,11 +5,10 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
-class FhirBoolean implements FhirPrimitiveBase {
+class FhirBoolean implements PrimitiveType {
   const FhirBoolean._(this._valueString, this._valueBoolean, this._isValid,
       this._isTrueBoolean);
 
@@ -35,6 +34,9 @@ class FhirBoolean implements FhirPrimitiveBase {
           ? FhirBoolean.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirBoolean>(
               'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
+
+  @override
+  String get fhirType => 'boolean';
 
   final String _valueString;
   final bool? _valueBoolean;

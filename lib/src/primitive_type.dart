@@ -1,11 +1,18 @@
-abstract class FhirPrimitiveBase {
+import 'package:meta/meta.dart';
+
+import 'primitive_types.dart';
+
+@immutable
+abstract class PrimitiveType extends Base {
   /// Returns the primitive value of the FHIR type.
   dynamic get value;
 
   /// Returns a JSON representation of the FHIR primitive.
+  @override
   dynamic toJson();
 
   /// Returns a YAML representation of the FHIR primitive.
+  @override
   dynamic toYaml();
 
   /// Checks if the value is valid according to the FHIR type constraints.

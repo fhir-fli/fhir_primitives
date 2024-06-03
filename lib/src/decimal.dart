@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
-// Project imports:
 import 'integer.dart';
 import 'number.dart';
 import 'primitive_type_exceptions.dart';
@@ -45,6 +44,9 @@ class FhirDecimal extends FhirNumber {
           ? FhirDecimal.fromJson(jsonDecode(jsonEncode(yaml)))
           : throw YamlFormatException<FhirDecimal>(
               'FormatException: "$yaml" is not a valid Yaml string or YamlMap.');
+
+  @override
+  String get fhirType => 'decimal';
 
   final bool isInt;
   @override

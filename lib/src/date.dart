@@ -3,8 +3,7 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
 class FhirDate extends FhirDateTimeBase {
@@ -49,6 +48,9 @@ class FhirDate extends FhirDateTimeBase {
           month: month,
           day: day,
           isUtc: isUtc ?? false) as FhirDate;
+
+  @override
+  String get fhirType => 'date';
 
   @override
   bool operator ==(Object other) => isEqual(other) ?? false;

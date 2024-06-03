@@ -5,11 +5,10 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
-// Project imports:
-import '../fhir_primitives.dart';
+import 'primitive_types.dart';
 
 @immutable
-class FhirTime implements FhirPrimitiveBase, Comparable<FhirTime> {
+class FhirTime implements PrimitiveType, Comparable<FhirTime> {
   const FhirTime._(this._valueString, this._valueTime, this._isValid);
 
   factory FhirTime(dynamic inValue) {
@@ -54,6 +53,9 @@ class FhirTime implements FhirPrimitiveBase, Comparable<FhirTime> {
       );
     }
   }
+
+  @override
+  String get fhirType => 'time';
 
   final String _valueString;
   final String? _valueTime;
