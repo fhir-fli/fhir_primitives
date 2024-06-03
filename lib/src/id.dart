@@ -9,9 +9,9 @@ import 'package:yaml/yaml.dart';
 import 'primitive_types.dart';
 
 /// returns the same resource with a new ID (even if there is already an ID present)
-FhirId newId() => FhirId(const uuid.Uuid().v4());
+FhirId generateNewUUidFhirId() => FhirId(const uuid.Uuid().v4());
 
-String newIdString() => const uuid.Uuid().v4();
+String generateNewUuidString() => const uuid.Uuid().v4();
 
 @immutable
 class FhirId implements PrimitiveType {
