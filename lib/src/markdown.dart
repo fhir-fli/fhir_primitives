@@ -1,7 +1,5 @@
-// Dart imports:
 import 'dart:convert';
 
-// Package imports:
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
@@ -45,6 +43,8 @@ class FhirMarkdown implements PrimitiveType {
   String toJson() => _valueString;
   @override
   String toYaml() => _valueString;
+  @override
+  String toJsonString() => jsonEncode(toJson());
 
   @override
   bool operator ==(Object other) =>

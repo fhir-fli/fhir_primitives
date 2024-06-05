@@ -1,7 +1,5 @@
-// Dart imports:
 import 'dart:convert';
 
-// Package imports:
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
@@ -56,6 +54,8 @@ class FhirBoolean implements PrimitiveType {
   dynamic toJson() => _isTrueBoolean ? _valueBoolean : _valueString;
   @override
   dynamic toYaml() => _isTrueBoolean ? _valueBoolean : _valueString;
+  @override
+  String toJsonString() => jsonEncode(toJson());
 
   @override
   bool operator ==(Object other) =>

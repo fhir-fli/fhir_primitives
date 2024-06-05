@@ -1,4 +1,3 @@
-// Package imports:
 import 'dart:convert';
 
 import 'package:meta/meta.dart';

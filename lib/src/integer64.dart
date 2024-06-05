@@ -1,7 +1,5 @@
-// Dart imports:
 import 'dart:convert';
 
-// Package imports:
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
@@ -55,6 +53,8 @@ class FhirInteger64 implements PrimitiveType, Comparable<FhirInteger64> {
   String toJson() => valueString;
   @override
   String toYaml() => valueString;
+  @override
+  String toJsonString() => jsonEncode(toJson());
 
   @override
   bool operator ==(Object other) =>

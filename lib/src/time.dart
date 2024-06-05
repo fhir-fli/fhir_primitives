@@ -1,7 +1,5 @@
-// Dart imports:
 import 'dart:convert';
 
-// Package imports:
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
@@ -90,6 +88,8 @@ class FhirTime implements PrimitiveType, Comparable<FhirTime> {
   String toJson() => _valueString;
   @override
   String toYaml() => _valueString;
+  @override
+  String toJsonString() => jsonEncode(toJson());
 
   bool? _compare(Comparator comparator, Object o) {
     if (identical(this, o)) {

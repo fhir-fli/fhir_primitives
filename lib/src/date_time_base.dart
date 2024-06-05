@@ -1,4 +1,5 @@
-// Package imports:
+import 'dart:convert';
+
 import 'package:meta/meta.dart';
 
 import '../fhir_primitives.dart';
@@ -76,6 +77,9 @@ abstract class FhirDateTimeBase
 
   @override
   String toYaml() => input.toString();
+
+  @override
+  String toJsonString() => jsonEncode(toJson());
 
   Map<String, num> toMap() => <String, num>{
         'year': year,

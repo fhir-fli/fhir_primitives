@@ -1,7 +1,5 @@
-// Dart imports:
 import 'dart:convert';
 
-// Package imports:
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 

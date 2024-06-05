@@ -25,3 +25,4 @@ export 'src/unsigned_int.dart';
 export 'src/uri.dart';
 export 'src/url.dart';
 export 'src/uuid.dart';
+export 'src/xhtml.dart';

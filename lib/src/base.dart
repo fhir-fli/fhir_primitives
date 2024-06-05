@@ -10,4 +10,6 @@ abstract class FhirBase {
 
   /// Returns a YAML representation of the FHIR primitive.
   dynamic toYaml();
+
+  String toJsonString();
 }

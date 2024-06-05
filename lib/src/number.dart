@@ -1,4 +1,5 @@
-// Package imports:
+import 'dart:convert';
+
 import 'package:meta/meta.dart';
 
 import '../fhir_primitives.dart';
@@ -19,11 +20,12 @@ abstract class FhirNumber implements PrimitiveType, Comparable<FhirNumber> {
 
   @override
   String toString() => valueString;
-
   @override
   dynamic toJson() => valueNumber;
   @override
   dynamic toYaml() => valueNumber;
+  @override
+  String toJsonString() => jsonEncode(toJson());
 
   @override
   bool operator ==(Object other) =>
