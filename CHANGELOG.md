@@ -1,3 +1,8 @@
+## 0.1.2
+
+- Removed xhtml, technically its not a primitive
+- Added a FhirBase class, the abstract class that all other FHIR objects extend or implement
+
 ## 0.1.1
 
 - Just some cleaning

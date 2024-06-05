@@ -1,7 +1,7 @@
 // Package imports:
 import 'package:meta/meta.dart';
 
-import 'primitive_types.dart';
+import '../fhir_primitives.dart';
 
 @immutable
 abstract class FhirNumber implements PrimitiveType, Comparable<FhirNumber> {

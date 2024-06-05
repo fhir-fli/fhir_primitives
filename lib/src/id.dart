@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart' as uuid;
 import 'package:yaml/yaml.dart';
 
-import 'primitive_types.dart';
+import '../fhir_primitives.dart';
 
 /// returns the same resource with a new ID (even if there is already an ID present)
 FhirId generateNewUUidFhirId() => FhirId(const uuid.Uuid().v4());

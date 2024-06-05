@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
-import 'primitive_types.dart';
+import '../fhir_primitives.dart';
 
 @immutable
 class FhirUrl implements PrimitiveType {

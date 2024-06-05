@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
-import 'primitive_types.dart';
+import '../fhir_primitives.dart';
 
 @immutable
 class FhirInstant extends FhirDateTimeBase {
