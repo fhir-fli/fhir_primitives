@@ -108,7 +108,8 @@ class FhirXhtml implements PrimitiveType {
 
   static bool _validateXhtml(String xhtml) {
     try {
-      final XmlDocument document = XmlDocument.parse(xhtml);
+      final XmlDocument document =
+          XmlDocument.parse(xhtml.replaceAll(r'\"', r'"'));
 
       final XmlElement rootElement = document.rootElement;
       if (rootElement.name.local != 'div') {
