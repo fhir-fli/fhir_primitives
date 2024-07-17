@@ -1,9 +1,6 @@
-## 0.1.2
-
-- Added a FhirBase class, the abstract class that all other FHIR objects extend or implement
-
 ## 0.1.1
 
+- Added a FhirBase class, the abstract class that all other FHIR objects extend or implement
 - Just some cleaning
 - And added xhtml
 
