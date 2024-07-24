@@ -1,6 +1,6 @@
 name: fhir_primitives
 description: Small package containing the FHIR Primitives as they are the same in the Dart Packages.
-version: 0.1.1
+version: 0.1.2
 homepage: https://www.fhirfli.dev/
 repository: https://github.com/fhir-fli/fhir_primitives
 
@@ -8,7 +8,7 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  meta: ^1.15.0
+  meta: ^1.12.0
   uuid: ^4.4.2
   xml: ^6.5.0
   yaml: ^3.1.2
