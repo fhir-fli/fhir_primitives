@@ -5,8 +5,9 @@ import 'package:meta/meta.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-abstract class FhirNumber implements PrimitiveType, Comparable<FhirNumber> {
-  const FhirNumber(this.valueString, this.valueNumber, this.isValid);
+abstract class FhirNumber extends PrimitiveType
+    implements Comparable<FhirNumber> {
+  FhirNumber(this.valueString, this.valueNumber, this.isValid);
 
   final String valueString;
   final num? valueNumber;

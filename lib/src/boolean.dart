@@ -6,8 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirBoolean implements PrimitiveType {
-  const FhirBoolean._(this._valueString, this._valueBoolean, this._isValid,
+class FhirBoolean extends PrimitiveType {
+  FhirBoolean._(this._valueString, this._valueBoolean, this._isValid,
       this._isTrueBoolean);
 
   factory FhirBoolean(dynamic inValue) {
@@ -63,4 +63,7 @@ class FhirBoolean implements PrimitiveType {
       (other is FhirBoolean && other.value == _valueBoolean) ||
       (other is bool && other == _valueBoolean) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirBoolean clone() => FhirBoolean.fromJson(toJson());
 }

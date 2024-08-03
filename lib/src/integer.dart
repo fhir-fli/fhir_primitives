@@ -8,7 +8,7 @@ import 'primitive_type_exceptions.dart';
 
 @immutable
 class FhirInteger extends FhirNumber {
-  const FhirInteger._(super.valueString, super.valueNumber, super.isValid);
+  FhirInteger._(super.valueString, super.valueNumber, super.isValid);
 
   factory FhirInteger(dynamic inValue) {
     if (inValue is int) {
@@ -45,4 +45,7 @@ class FhirInteger extends FhirNumber {
           'This number is: ${toString()}, compared number is $other');
     }
   }
+
+  @override
+  FhirInteger clone() => FhirInteger.fromJson(toJson());
 }

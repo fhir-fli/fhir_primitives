@@ -6,8 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirTime implements PrimitiveType, Comparable<FhirTime> {
-  const FhirTime._(this._valueString, this._valueTime, this._isValid);
+class FhirTime extends PrimitiveType implements Comparable<FhirTime> {
+  FhirTime._(this._valueString, this._valueTime, this._isValid);
 
   factory FhirTime(dynamic inValue) {
     if (inValue is String &&
@@ -281,4 +281,7 @@ class FhirTime implements PrimitiveType, Comparable<FhirTime> {
       : (this < other ?? false)
           ? -1
           : 0;
+
+  @override
+  FhirTime clone() => FhirTime.fromJson(toJson());
 }

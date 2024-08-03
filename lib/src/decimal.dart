@@ -9,7 +9,7 @@ import 'primitive_type_exceptions.dart';
 
 @immutable
 class FhirDecimal extends FhirNumber {
-  const FhirDecimal._(
+  FhirDecimal._(
       super.valueString, super.valueNumber, super.isValid, this.isInt);
 
   factory FhirDecimal(dynamic inValue) {
@@ -65,4 +65,7 @@ class FhirDecimal extends FhirNumber {
           'This number is: ${toString()}, compared number is $other');
     }
   }
+
+  @override
+  FhirDecimal clone() => FhirDecimal.fromJson(toJson());
 }

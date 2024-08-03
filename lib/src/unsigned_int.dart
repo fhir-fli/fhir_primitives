@@ -8,7 +8,7 @@ import 'primitive_type_exceptions.dart';
 
 @immutable
 class FhirUnsignedInt extends FhirNumber {
-  const FhirUnsignedInt._(super.valueString, super.valueNumber, super.isValid);
+  FhirUnsignedInt._(super.valueString, super.valueNumber, super.isValid);
 
   factory FhirUnsignedInt(dynamic inValue) {
     if (inValue is int) {
@@ -51,4 +51,7 @@ class FhirUnsignedInt extends FhirNumber {
           'This number is: ${toString()}, compared number is $other');
     }
   }
+
+  @override
+  FhirUnsignedInt clone() => FhirUnsignedInt.fromJson(toJson());
 }

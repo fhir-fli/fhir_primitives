@@ -6,8 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirUuid implements PrimitiveType {
-  const FhirUuid._(this._valueString, this._valueUuid, this._isValid);
+class FhirUuid extends PrimitiveType {
+  FhirUuid._(this._valueString, this._valueUuid, this._isValid);
 
   factory FhirUuid(dynamic inValue) => inValue is String &&
           RegExp(r'^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[8-9A-B][0-9A-F]{3}-[0-9A-F]{12}$')
@@ -52,4 +52,7 @@ class FhirUuid implements PrimitiveType {
       identical(this, other) ||
       (other is FhirUuid && other.value == _valueUuid) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirUuid clone() => FhirUuid.fromJson(toJson());
 }

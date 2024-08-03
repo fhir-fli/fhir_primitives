@@ -6,8 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirMarkdown implements PrimitiveType {
-  const FhirMarkdown._(this._valueString, this._valueMarkdown, this._isValid);
+class FhirMarkdown extends PrimitiveType {
+  FhirMarkdown._(this._valueString, this._valueMarkdown, this._isValid);
 
   factory FhirMarkdown(dynamic inValue) =>
       inValue is String && RegExp(r'[ \r\n\t\S]+').hasMatch(inValue)
@@ -51,4 +51,7 @@ class FhirMarkdown implements PrimitiveType {
       identical(this, other) ||
       (other is FhirMarkdown && other.value == _valueMarkdown) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirMarkdown clone() => FhirMarkdown.fromJson(toJson());
 }

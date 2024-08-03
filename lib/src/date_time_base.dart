@@ -5,8 +5,8 @@ import 'package:meta/meta.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-abstract class FhirDateTimeBase
-    implements PrimitiveType, Comparable<FhirDateTimeBase> {
+abstract class FhirDateTimeBase extends PrimitiveType
+    implements Comparable<FhirDateTimeBase> {
   @override
   final bool isValid;
   final FhirDateTimePrecision precision;
@@ -23,7 +23,7 @@ abstract class FhirDateTimeBase
   final num timeZoneOffset;
   final bool isUtc;
 
-  const FhirDateTimeBase({
+  FhirDateTimeBase({
     required this.isValid,
     required this.precision,
     required this.input,

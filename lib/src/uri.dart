@@ -6,8 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirUri implements PrimitiveType {
-  const FhirUri._(this._valueString, this._valueUri, this._isValid);
+class FhirUri extends PrimitiveType {
+  FhirUri._(this._valueString, this._valueUri, this._isValid);
 
   factory FhirUri(dynamic inValue) {
     if (inValue is Uri) {
@@ -58,4 +58,7 @@ class FhirUri implements PrimitiveType {
       (other is FhirUri && other.value == _valueUri) ||
       (other is Uri && other == _valueUri) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirUri clone() => FhirUri.fromJson(toJson());
 }

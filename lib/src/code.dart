@@ -6,11 +6,11 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirCode implements PrimitiveType {
-  const FhirCode._(this._valueString, this._valueCode, this._isValid);
+class FhirCode extends PrimitiveType {
+  FhirCode._(this._valueString, this._valueCode, this._isValid);
 
   /// Construct a [FhirCode] constant at compile time
-  const FhirCode.asConst(String code)
+  FhirCode.asConst(String code)
       : _valueString = code,
         _valueCode = code,
         _isValid = true;
@@ -57,4 +57,7 @@ class FhirCode implements PrimitiveType {
       identical(this, other) ||
       (other is FhirCode && other.value == _valueCode) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirCode clone() => FhirCode.fromJson(toJson());
 }

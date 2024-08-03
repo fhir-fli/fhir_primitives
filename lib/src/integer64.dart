@@ -6,8 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirInteger64 implements PrimitiveType, Comparable<FhirInteger64> {
-  const FhirInteger64._(this.valueString, this.valueNumber, this.isValid);
+class FhirInteger64 extends PrimitiveType implements Comparable<FhirInteger64> {
+  FhirInteger64._(this.valueString, this.valueNumber, this.isValid);
 
   factory FhirInteger64(dynamic inValue) {
     if (inValue is int) {
@@ -95,4 +95,7 @@ class FhirInteger64 implements PrimitiveType, Comparable<FhirInteger64> {
           'This number is: ${toString()}, compared number is $other');
     }
   }
+
+  @override
+  FhirInteger64 clone() => FhirInteger64.fromJson(toJson());
 }

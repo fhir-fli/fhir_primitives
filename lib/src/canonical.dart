@@ -6,8 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirCanonical implements PrimitiveType {
-  const FhirCanonical._(this._valueString, this._valueCanonical, this._isValid);
+class FhirCanonical extends PrimitiveType {
+  FhirCanonical._(this._valueString, this._valueCanonical, this._isValid);
 
   factory FhirCanonical(dynamic inValue) {
     if (inValue is Uri) {
@@ -61,4 +61,7 @@ class FhirCanonical implements PrimitiveType {
       identical(this, other) ||
       (other is FhirCanonical && other.value == _valueCanonical) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirCanonical clone() => FhirCanonical.fromJson(toJson());
 }

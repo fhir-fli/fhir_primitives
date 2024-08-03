@@ -12,8 +12,8 @@ FhirId generateNewUUidFhirId() => FhirId(const uuid.Uuid().v4());
 String generateNewUuidString() => const uuid.Uuid().v4();
 
 @immutable
-class FhirId implements PrimitiveType {
-  const FhirId._(this._valueString, this._valueId, this._isValid);
+class FhirId extends PrimitiveType {
+  FhirId._(this._valueString, this._valueId, this._isValid);
 
   factory FhirId(dynamic inValue) =>
       inValue is String && RegExp(r'^[A-Za-z0-9\-\.]{1,64}$').hasMatch(inValue)
@@ -57,4 +57,7 @@ class FhirId implements PrimitiveType {
       identical(this, other) ||
       (other is FhirId && other.value == _valueId) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirId clone() => FhirId.fromJson(toJson());
 }

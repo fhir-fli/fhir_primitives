@@ -6,9 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirBase64Binary implements PrimitiveType {
-  const FhirBase64Binary._(
-      this._valueString, this._valueBase64Binary, this._isValid);
+class FhirBase64Binary extends PrimitiveType {
+  FhirBase64Binary._(this._valueString, this._valueBase64Binary, this._isValid);
 
   factory FhirBase64Binary(dynamic inValue) =>
       inValue is String && inValue.length % 4 == 0
@@ -52,4 +51,7 @@ class FhirBase64Binary implements PrimitiveType {
       identical(this, other) ||
       (other is FhirBase64Binary && other.value == _valueBase64Binary) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirBase64Binary clone() => FhirBase64Binary.fromJson(toJson());
 }

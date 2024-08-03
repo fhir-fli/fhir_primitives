@@ -6,7 +6,7 @@ import '../fhir_primitives.dart';
 
 @immutable
 class FhirDate extends FhirDateTimeBase {
-  const FhirDate.fromBase({
+  FhirDate.fromBase({
     required super.isValid,
     required super.precision,
     required super.input,
@@ -82,4 +82,7 @@ class FhirDate extends FhirDateTimeBase {
   @override
   FhirDate operator -(ExtendedDuration other) =>
       FhirDateTimeBase.subtract<FhirDate>(this, other) as FhirDate;
+
+  @override
+  FhirDate clone() => FhirDate.fromJson(toJson());
 }

@@ -1,3 +1,8 @@
+## 0.1.3
+
+- Added lots of functionality to FhirBase (required for mapping)
+- This does mean that none of the primitives are now constant unfortunately
+
 ## 0.1.2
 
 - Downgraded meta

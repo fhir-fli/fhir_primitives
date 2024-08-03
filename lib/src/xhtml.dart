@@ -8,8 +8,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirXhtml implements PrimitiveType {
-  const FhirXhtml._(this._valueString, this._valueXhtml, this._isValid);
+class FhirXhtml extends PrimitiveType {
+  FhirXhtml._(this._valueString, this._valueXhtml, this._isValid);
 
   factory FhirXhtml(dynamic inValue) =>
       inValue is String && _validateXhtml(inValue)
@@ -165,4 +165,7 @@ class FhirXhtml implements PrimitiveType {
 
     return true;
   }
+
+  @override
+  FhirXhtml clone() => FhirXhtml.fromJson(toJson());
 }

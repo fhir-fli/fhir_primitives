@@ -6,8 +6,8 @@ import 'package:yaml/yaml.dart';
 import '../fhir_primitives.dart';
 
 @immutable
-class FhirOid implements PrimitiveType {
-  const FhirOid._(this._valueString, this._valueOid, this._isValid);
+class FhirOid extends PrimitiveType {
+  FhirOid._(this._valueString, this._valueOid, this._isValid);
 
   factory FhirOid(dynamic inValue) => inValue is String &&
           RegExp(r'^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$').hasMatch(inValue)
@@ -51,4 +51,7 @@ class FhirOid implements PrimitiveType {
       identical(this, other) ||
       (other is FhirOid && other.value == _valueOid) ||
       (other is String && other == _valueString);
+
+  @override
+  FhirOid clone() => FhirOid.fromJson(toJson());
 }
