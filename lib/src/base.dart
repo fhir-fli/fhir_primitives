@@ -17,6 +17,14 @@ abstract class FhirBase {
   /// Returns a JSON representation of the FHIR primitive.
   dynamic toJson();
 
+  dynamic toJsonWithType() {
+    final dynamic json = toJson();
+    if (json is Map<String, dynamic>) {
+      json['fhirType'] = fhirType;
+    }
+    return json;
+  }
+
   /// Returns a YAML representation of the FHIR primitive.
   dynamic toYaml();
 
