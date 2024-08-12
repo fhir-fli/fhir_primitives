@@ -12,7 +12,7 @@ abstract class FhirBase {
   final List<String> _formatCommentsPre = <String>[];
   final List<String> _formatCommentsPost = <String>[];
 
-  String get fhirType;
+  String get fhirType => 'Base';
 
   /// Returns a JSON representation of the FHIR primitive.
   dynamic toJson();
@@ -129,16 +129,10 @@ abstract class FhirBase {
   // Validation Methods
   List<String> validate() => <String>[];
 
-  // FHIR Type Methods
-  String get typeName => 'Base';
-
   // Additional utility methods
   bool get isPrimitive => false;
 
   String? primitiveValue() => null;
 
   bool isEmpty() => _userData.isEmpty && _annotations.isEmpty;
-
-  @override
-  String toString() => typeName;
 }
