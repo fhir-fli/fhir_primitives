@@ -1,3 +1,8 @@
+## 0.1.4
+
+- much better README
+
+
 ## 0.1.3
 
 - Added lots of functionality to FhirBase (required for mapping)
