@@ -2,6 +2,7 @@
 
 - Added lots of functionality to FhirBase (required for mapping)
 - This does mean that none of the primitives are now constant unfortunately
+- Added to the README
 
 ## 0.1.2
 
